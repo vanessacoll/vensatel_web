@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* CSS EXTRA */
+
+.login-cover .login-cover-bg {
+    background: transparent!important;
+}
+
+.login-cover, .login-cover-bg, .login-cover-image {
+
+    animation: none!important;
+}

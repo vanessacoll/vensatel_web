@@ -13,7 +13,6 @@ return [
     |
     | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
     |
-    */
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
@@ -29,6 +28,28 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => false, */
+
+
+
+    'paths' => [
+        'api/*' => [
+            'allowed_methods' => ['GET', 'POST'],
+            'allowed_origins' => ['*'],
+            'allowed_headers' => ['Content-Type', 'Authorization'],
+            'exposed_headers' => [],
+            'max_age' => 3600,
+            'supports_credentials' => false,
+        ],
+        'reverse' => [
+            'allowed_methods' => ['GET'],
+            'allowed_origins' => ['*'],
+            'allowed_headers' => ['Content-Type'],
+            'exposed_headers' => [],
+            'max_age' => 0,
+            'supports_credentials' => false,
+        ],
+    ],
+
 
 ];

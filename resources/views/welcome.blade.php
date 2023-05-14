@@ -1,1 +1,1 @@
-@extends('layout.template')
+@extends('template.template')

@@ -46,6 +46,9 @@
         <link rel="apple-touch-icon" sizes="72x72" href="template/images/icono.png">
         <link rel="apple-touch-icon" sizes="114x114" href="template/images/icono.png">
 
+
+        <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+
     <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style>
 
     </head>

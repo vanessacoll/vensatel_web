@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('enviar', [App\Http\Controllers\ContactController::class, 'Enviar']);
+
+Route::get('suscribir', [App\Http\Controllers\ContactController::class, 'Suscribir']);
+
+Route::get('services', [App\Http\Controllers\ContactController::class, 'index'])->name('index');
+
+Route::get('/proxy', [App\Http\Controllers\ProxyController::class, 'proxy'])->name('proxy');

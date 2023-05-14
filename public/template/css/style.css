@@ -694,7 +694,7 @@ textarea.form-control {
 
 .form-control {
 	height: auto;
-	line-height: 20px;
+	line-height: 10px;
 	padding: 16px 21px;
 	border: 0;
 	color: inherit;
@@ -1597,7 +1597,7 @@ body.sideblock-active .close-block {
 	position: relative;
 	background: #fff;
 	width: auto;
-	max-width: 730px;
+	max-width: 	1000px;
 	margin: 20px auto;
 }
 
@@ -2885,12 +2885,12 @@ div.flexslider .flex-control-paging li a.flex-active {
 
 div.flexslider.control-dark .flex-control-paging li a,
 div.flexslider.control-dark .flex-control-paging li a:hover{
-	background: #333;
+	background: #fff;
 }
 
 div.flexslider.control-dark .flex-control-paging li a.flex-active {
 	background: transparent;
-	border-color: #333;
+	border-color: #fff;
 }
 
 /* Direction nav */
@@ -6658,4 +6658,10 @@ body.mobile .mobile-hidden {
 		float: none;
 	}
 	
+}
+
+.image img{
+  height: auto;
+  width: 12rem;
+  padding-bottom: 20px;
 }

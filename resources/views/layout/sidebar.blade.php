@@ -19,7 +19,7 @@
                         <li><a href="#about" class="scrollto">Nosotros</a></li>
                         <li><a href="#services" class="scrollto">Internet Residencial</a></li>
                         <li><a href="#portfolio" class="scrollto">Cobertura</a></li>
-                        <li><a href="#contact" class="scrollto">Solicitar Servicio</a></li>
+                        <li><a href="#contact" class="scrollto">Contactanos</a></li>
                     </ul>
                 </nav>
             </header>
