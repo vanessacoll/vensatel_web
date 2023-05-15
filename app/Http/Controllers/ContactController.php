@@ -79,11 +79,13 @@ class ContactController extends Controller
         $mail->date   = $date;
         $mail->saveOrFail();
 
+        $password = Str::random();
+
         $user = User::create([
             'name' => $request->nombres,
             'cedula' => $request->cedula,
             'email' => $request->email,
-            'password' => Hash::make($request->contraseña),
+            'password' => Hash::make($password),
             'suscriptor' => 'N',
             'direccion' => $request->direccion,
             'cedula' => $request->cedula
@@ -96,8 +98,7 @@ class ContactController extends Controller
         $objDemoUser->email     = $request->email;
         $objDemoUser->telefono  = $request->telefono;
         $objDemoUser->direccion = $request->direccion;
-        $objDemoUser->usuario   = $user->usuario;
-        $objDemoUser->password  = $user->password;
+        $objDemoUser->password  = $password;
 
 
         //Mail::to('rmendoza9@gmail.com')->send(new Suscribe_contact($objDemo));
