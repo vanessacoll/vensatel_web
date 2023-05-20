@@ -44,6 +44,8 @@
             </a>
           </li>
 
+@can('solicitudes')
+
           <li class="nav-item">
             <a href="" class="nav-link {{ request()->is('*solicitudes*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-store"></i>
@@ -53,6 +55,9 @@
             </a>
           </li>
 
+@endcan
+
+@can('pagos')
 
           <li class="nav-item">
             <a class="nav-link">
@@ -65,29 +70,32 @@
 
 <ul class="nav nav-treeview">
 
-<li class="nav-item">
-<a href="" class="nav-link {{ request()->is('*cajas*') ? 'active' : '' }}">
-<i class="far fa-circle nav-icon"></i>
-<p>Pago Movil</p>
-</a>
-</li>
+    <li class="nav-item">
+    <a href="" class="nav-link {{ request()->is('*cajas*') ? 'active' : '' }}">
+    <i class="far fa-circle nav-icon"></i>
+    <p>Pago Movil</p>
+    </a>
+    </li>
 
-<li class="nav-item">
-<a href="" class="nav-link {{ request()->is('*apertura*') ? 'active' : '' }}">
-<i class="far fa-circle nav-icon"></i>
-<p>Transferencias</p>
-</a>
-</li>
-<li class="nav-item">
-<a href="#" class="nav-link {{ request()->is('*cierre*') ? 'active' : '' }}" onclick="openModal()">
-<i class="far fa-circle nav-icon"></i>
-<p>Pago en Oficina</p>
-</a>
-</li>
+    <li class="nav-item">
+    <a href="" class="nav-link {{ request()->is('*apertura*') ? 'active' : '' }}">
+    <i class="far fa-circle nav-icon"></i>
+    <p>Transferencias</p>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a href="#" class="nav-link {{ request()->is('*cierre*') ? 'active' : '' }}" onclick="openModal()">
+    <i class="far fa-circle nav-icon"></i>
+    <p>Pago en Oficina</p>
+    </a>
+    </li>
 
 </ul>
           </li>
 
+@endcan
+
+@can('consultas')
 
           <li class="nav-item">
             <a href="" class="nav-link">
@@ -99,6 +107,7 @@
             </a>
 
 <ul class="nav nav-treeview">
+
 <li class="nav-item">
 <a href="" class="nav-link {{ request()->is('*listado_transacciones*') ? 'active' : '' }}">
 <i class="far fa-circle nav-icon"></i>
@@ -121,10 +130,12 @@
 </a>
 </li>
 
-
 </ul>
           </li>
 
+@endcan
+
+@can('reclamos')
 
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->is('*vender*') ? 'active' : '' }}" onclick="showModal()" >
@@ -135,6 +146,7 @@
             </a>
           </li>
          
+@endcan
 
           <li class="nav-header">OTROS</li>
             <li class="nav-item" >

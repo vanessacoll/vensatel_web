@@ -1,5 +1,6 @@
 @component('mail::message')
 <h1>Hola!</h1>
+<br>
 <strong>Tienes un Nuevo mensaje de {{$mail->name}}</strong>
 <br>
 Email: {{$mail->email}}

@@ -47,7 +47,6 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 
-    </head>
 
 
     <link href="{{asset("page_template/css/swiper-bundle.min.css")}}" rel="stylesheet">
@@ -69,4 +68,11 @@
         userLinkRTL.setAttribute('disabled', true);
       }
     </script>
+
+    <!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
   </head>
