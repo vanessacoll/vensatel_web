@@ -1,4 +1,4 @@
-s<script src="{{asset("page_template/js/popper.min.js")}}"></script>
+<script src="{{asset("page_template/js/popper.min.js")}}"></script>
 <script src="{{asset("page_template/js/bootstrap.min.js")}}"></script>
 <script src="{{asset("page_template/js/anchor.min.js")}}"></script>
 <script src="{{asset("page_template/js/is.min.js")}}"></script>
@@ -20,6 +20,7 @@ s<script src="{{asset("page_template/js/popper.min.js")}}"></script>
 <script src="{{asset("page_template/js/leaflet.markercluster.js")}}"></script>
 <script src="{{asset("page_template/js/leaflet-tilelayer-colorfilter.min.js")}}"></script>
 
+<script src="{{asset("adminlte/plugins/jquery/jquery.min.js")}}"></script>
 <script src="{{asset("adminlte/plugins/toastr/toastr.min.js")}}"></script>
 
 
@@ -27,9 +28,9 @@ s<script src="{{asset("page_template/js/popper.min.js")}}"></script>
 
 function enviar(){
 
-    if(validaForm(1)){
+    if(validaForm('1')){
 
-     jQuery.ajax({
+    jQuery.ajax({
 
                   url: "{{ url('/enviar') }}",
                   method: 'get',
@@ -70,75 +71,65 @@ function enviar(){
 
 }
 
-function solicitudservicio(){
+</script>
 
-if(validaForm(2)){
+<script>
+function solicitudservicio() {
+    var nombres = jQuery('#nombres').val();
+    var cedula = jQuery('#cedula').val();
+    var telefono = jQuery('#telefono').val();
+    var email = jQuery('#email').val();
+    var direccion = jQuery('#direccion').val();
+    var latitud = jQuery('#latitud').val();
+    var longitud = jQuery('#longitud').val();
 
- jQuery.ajax({
+    if (validaForm('2')) {
+        jQuery.ajax({
+            url: "{{ url('/suscribir') }}",
+            method: 'get',
+            data: {
+                nombres: nombres,
+                cedula: cedula,
+                telefono: telefono,
+                email: email,
+                direccion: direccion,
+                latitud: latitud,
+                longitud: longitud
+            },
+            success: function(result) {
+                if (result.errors) {
+                    toastr.error(result.errors);
+                } else {
+                    toastr.success('Solicitud enviada exitosamente, por favor verifique su correo.');
 
-              url: "{{ url('/suscribir') }}",
-              method: 'get',
-              data: {
-                 nombres:   jQuery('#nombres').val(),
-                 cedula:    jQuery('#cedula').val(),
-                 telefono:  jQuery('#telefono').val(),
-                 email:     jQuery('#email').val(),
-                 direccion: jQuery('#direccion').val(),
-                 latitud:   jQuery('#latitud').val(),
-                 longitud:  jQuery('#longitud').val(),
-              },
-              success: function(result){
-
-                if(result.errors)
-                {
-
-                toastr.error(result.errors)
-
+                    $('#nombres').val('');
+                    $('#cedula').val('');
+                    $('#telefono').val('');
+                    $('#email').val('');
+                    $('#direccion').val('');
+                    $('#latitud').val('');
+                    $('#longitud').val('');
                 }
-                else
-                {
-
-                toastr.success('Solicitud enviada exitosamente, por favor verifique si correo.')
-
-                  $('#nombres').val('');
-                  $('#cedula').val('');
-                  $('#telefono').val('');
-                  $('#email').val('');
-                  $('#direccion').val('');
-                  $('#latitud').val('');
-                  $('#longitud').val('');
-
-                }
-}});
-
-    }else{
-
-    toastr.warning('No puede enviar campos vacios.')
-
+            }
+        });
+    } else {
+        toastr.warning('No puede enviar campos vacíos.');
     }
-
 }
+</script>
 
-function validaForm(form){
+<script>
 
-    if(form==1){
-
-        if($("#name").val() == "" || $("#email").val() == "" || $("#asunto").val() == "" || $("#message").val() == ""){
-
-        return false;
-
+function validaForm(form) {
+    if (form == '1') {
+        if ($("#name").val() == "" || $("#email").val() == "" || $("#asunto").val() == "" || $("#message").val() == "") {
+            return false;
         }
-
         return true;
-
-    }elseif(form==2){
-
-        if($("#nombres").val() == "" || $("#cedula").val() == "" || $("#telefono").val() == "" || $("#email").val() == "" || $("#direccion").val() == ""){
-
-        return false;
-
+    } else if (form == '2') {
+        if ($("#nombres").val() == "" || $("#cedula").val() == "" || $("#telefono").val() == "" || $("#email").val() == "" || $("#direccion").val() == "") {
+            return false;
         }
-
         return true;
     }
 }

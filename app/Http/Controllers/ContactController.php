@@ -8,9 +8,13 @@ use App\Models\Suscribe;
 use App\Models\User;
 use App\Mail\Contacto;
 use App\Mail\Suscribe_contact;
+use App\Mail\NewUserMail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Http\Response;
+
 
 class ContactController extends Controller
 {
@@ -54,61 +58,73 @@ class ContactController extends Controller
 
 	}
 
+public function Suscribir(Request $request)
+{
+    $email = $request->email;
 
-	public function Suscribir(Request $request)
-    {
+    // Verificar si el correo electrónico ya está registrado
+    if (User::where('email', $email)->exists()) {
+        return response()->json(['errors' => 'El correo electrónico ya está registrado']);
+    }else{
 
-    	$objDemo = new \stdClass($request->input());
-        $objDemo->name    = $request->nombre;
-        $objDemo->email   = $request->email;
-        $objDemo->telefono = $request->telefono;
-        $objDemo->direccion = $request->direccion;
+    // Crear un objeto con los datos para el envío de correo
+    $objDemo = (object) [
+        'name' => $request->nombre,
+        'email' => $email,
+        'telefono' => $request->telefono,
+        'direccion' => $request->direccion
+    ];
 
+    // Enviar correo de suscripción
+    Mail::to('collvanessa041@gmail.com')->send(new Suscribe_contact($objDemo));
 
-        //Mail::to('rmendoza9@gmail.com')->send(new Suscribe_contact($objDemo));
+    // Obtener la fecha actual
+    $date = now()->locale('es');
 
-        $date = Carbon::now()->locale('es');
+    // Crear un registro en la tabla de suscriptores
+    $mail = new Suscribe($request->input());
+    $mail->name = $request->nombres;
+    $mail->email = $email;
+    $mail->telefono = $request->telefono;
+    $mail->coordenadas = $request->latitud.','.$request->longitud;
+    $mail->direccion = $request->direccion;
+    $mail->id_inmueble = $request->inmueble;
+    $mail->date = $date;
+    $mail->saveOrFail();
 
-        $mail = new Suscribe($request->input());
-        $mail->name    = $request->nombres;
-        $mail->email   = $request->email;
-        $mail->telefono = $request->telefono;
-        $mail->coordenadas = $request->latitud.','.$request->longitud;
-        $mail->direccion = $request->direccion;
-        $mail->id_inmueble = $request->inmueble;
-        $mail->date   = $date;
-        $mail->saveOrFail();
+    // Generar una contraseña aleatoria
+    $password = Str::random();
 
-        $password = Str::random();
+    // Crear un nuevo usuario
+    $user = User::create([
+        'name' => $request->nombres,
+        'cedula' => $request->cedula,
+        'email' => $email,
+        'password' => Hash::make($password),
+        'suscriptor' => 'N',
+        'direccion' => $request->direccion,
+        'cedula' => $request->cedula
+    ]);
 
-        $user = User::create([
-            'name' => $request->nombres,
-            'cedula' => $request->cedula,
-            'email' => $request->email,
-            'password' => Hash::make($password),
-            'suscriptor' => 'N',
-            'direccion' => $request->direccion,
-            'cedula' => $request->cedula
-        ]);
+    // Asignar el rol "Cliente" al usuario
+    $user->assignRole('Cliente');
 
-        $user->assignRole('Cliente');
+    // Crear un objeto con los datos para el envío de correo al usuario
+    $objDemoUser = (object) [
+        'name' => $request->nombre,
+        'email' => $email,
+        'telefono' => $request->telefono,
+        'direccion' => $request->direccion,
+        'password' => $password
+    ];
 
-        $objDemoUser = new \stdClass($request->input());
-        $objDemoUser->name      = $request->nombre;
-        $objDemoUser->email     = $request->email;
-        $objDemoUser->telefono  = $request->telefono;
-        $objDemoUser->direccion = $request->direccion;
-        $objDemoUser->password  = $password;
+    // Enviar correo al nuevo usuario
+    Mail::to($email)->send(new NewUserMail($objDemoUser));
 
+    return response()->json(['success' => 'OK']);
+    }
+}
 
-        //Mail::to('rmendoza9@gmail.com')->send(new Suscribe_contact($objDemo));
-
-         return response()->json([
-                  'success' => 'OK'
-                ]);
-
-
-	}
 
     public function index(){
 

@@ -19,7 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('enviar', [App\Http\Controllers\ContactController::class, 'Enviar']);
 
@@ -28,3 +27,19 @@ Route::get('suscribir', [App\Http\Controllers\ContactController::class, 'Suscrib
 Route::get('services', [App\Http\Controllers\ContactController::class, 'index'])->name('index');
 
 Route::get('/proxy', [App\Http\Controllers\ProxyController::class, 'proxy'])->name('proxy');
+
+
+Route::middleware(['auth'])->group(function () {
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'], function () {
+   echo Artisan::call('config:clear');
+   echo Artisan::call('config:cache');
+   echo Artisan::call('cache:clear');
+   echo Artisan::call('route:clear');
+   echo Artisan::call('permission:cache-reset');
+})->name('admin.home')->middleware('isAdmin');
+
+});
