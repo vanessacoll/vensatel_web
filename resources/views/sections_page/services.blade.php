@@ -42,14 +42,14 @@
 <!------------------------------------------------ prices section --------------------------------------------->
 
 <section class="">
-    <div class="bg-holder overlay" style="background-image:url(page_template/img/bg-2.jpg);background-position: center top;"></div>
+    <div class="bg-holder " style="background-image:url(page_template/img/mapas.png);background-position: center top;"></div>
     <!--/.bg-holder-->
     <div class="container">
 
       <div class="row">
         <div class="col text-center">
-          <h1 class="fs-2 fs-sm-4 fs-md-5">Nuestros Planes</h1>
-          <p class="lead">La mejor velocidad para tu hogar.</p>
+          <h1 class="fs-2 fs-sm-4 fs-md-5 text-primary">Nuestros Planes</h1>
+          <p class="lead text-primary"><strong>La mejor velocidad para tu hogar.</strong></p>
         </div>
       </div>
 
