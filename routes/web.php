@@ -42,4 +42,23 @@ Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'ind
    echo Artisan::call('permission:cache-reset');
 })->name('admin.home')->middleware('isAdmin');
 
+//Solicitudes
+
+Route::get('admin/solicitudes',[App\Http\Controllers\Admin\SolicitudesController::class, 'index'])->name('solicitudes.index.admin');
+
+Route::get('admin/solicitudes/update/{solicitudes}',[App\Http\Controllers\Admin\SolicitudesController::class, 'actualizar_solicitudes'])->name('solicitudes.actualizar.admin');
+
+//Reclamos
+
+Route::get('admin/reclamos',[App\Http\Controllers\Admin\ReclamosController::class, 'index'])->name('reclamos.index.admin');
+
+Route::get('admin/reclamos/update/{reclamos}',[App\Http\Controllers\Admin\ReclamosController::class, 'actualizar_reclamos'])->name('reclamos.actualizar.admin');
+
+//Pagos
+
+Route::get('admin/pagos',[App\Http\Controllers\Admin\SolicitudesController::class, 'index'])->name('pagos.index.admin');
+
+Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\SolicitudesController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
+
+
 });
