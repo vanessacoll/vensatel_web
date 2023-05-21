@@ -20,6 +20,65 @@
 
 @section('contenido')
 
+<div class="container-fluid">
+
+    <div class="row">
+           <div class="col-md-12">
+             <div class="card card-primary card-outline">
+               <div class="card-header">
+                 <h3 class="card-title">Listado de Cajeros</h3>
+               </div>
+               <!-- /.box-header -->
+               <div class="card-body">
+
+                   <table id="example1" class="table table-bordered table-striped">
+                   <thead>
+                   <tr>
+                       <th>Cliente</th>
+                       <th>Email</th>
+                       <th>Direccion</th>
+                       <th>Estatus</th>
+                       <th>Ver</th>
+                    </tr>
+                   </thead>
+                   <tbody>
+                   @foreach($solicitudes as $solicitud)
+
+                       <tr>
+
+                           <td>{{$solicitud->name}}</td>
+                           <td>{{$solicitud->email}}</td>
+                           <td>{{$solicitud->direccion}}</td>
+                           <td>{{$solicitud->status->descripcion}}</td>
+
+                           <td>
+
+
+                               <a class="btn btn-info" href="{{route("solicitudes.actualizar.admin",['solicitudes' => $solicitud->id_contact])}}">
+                                   <i class="fa fa-eye"></i>
+                               </a>
+
+
+                           </td>
+
+
+                       </tr>
+
+                   @endforeach
+                   </tbody>
+                 </table>
+               </div>
+
+               <div class="card-footer">
+   <a class="btn btn-default float-right" href="{{route("admin.home")}}">Cerrar</a>
+   </div>
+             </div>
+             <!-- /.box -->
+           </div>
+         </div>
+
+
+   </div>
 
 
 @endsection
