@@ -21,15 +21,20 @@ class Suscribe extends Model
      */
     protected $fillable = [
         'id_contact',
-        'name', 
+        'name',
         'email',
-        'telefono', 
+        'telefono',
         'id_inmueble',
         'coordenadas',
         'direccion',
         'date',
-        
+
     ];
 
     protected $primaryKey = 'id_contact';
+
+    public function status()
+    {
+    return $this->belongsTo('App\Models\Status', 'id_status', 'id_status');
+    }
 }

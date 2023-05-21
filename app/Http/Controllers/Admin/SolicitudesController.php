@@ -17,4 +17,11 @@ class SolicitudesController extends Controller
         return view('admin.solicitudes.solicitudes',compact('solicitudes'));
    }
 
+   public function actualizar_solicitudes(Suscribe $solicitudes)
+    {
+
+        return view('admin.solicitudes.solicitudes_index', ['solicitudes' => $solicitudes]);
+
+    }
+
 }
