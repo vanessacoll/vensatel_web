@@ -69,7 +69,7 @@ public function Suscribir(Request $request)
 
     // Crear un objeto con los datos para el envío de correo
     $objDemo = (object) [
-        'name' => $request->nombre,
+        'name' => $request->nombres,
         'email' => $email,
         'telefono' => $request->telefono,
         'direccion' => $request->direccion
@@ -111,7 +111,7 @@ public function Suscribir(Request $request)
 
     // Crear un objeto con los datos para el envío de correo al usuario
     $objDemoUser = (object) [
-        'name' => $request->nombre,
+        'name' => $request->nombres,
         'email' => $email,
         'telefono' => $request->telefono,
         'direccion' => $request->direccion,
