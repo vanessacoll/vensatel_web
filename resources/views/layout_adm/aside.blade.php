@@ -8,11 +8,11 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      
-     
-   
 
-      <!-- SidebarSearch Form 
+
+
+
+      <!-- SidebarSearch Form
 
         PODEMOS USARLO DESPUES
       <div class="form-inline">
@@ -32,7 +32,7 @@
 
            <!-- Sidebar user (optional) -->
 
- 
+
 
           <li class="nav-header">MENU</li>
             <li class="nav-item" >
@@ -71,20 +71,20 @@
 <ul class="nav nav-treeview">
 
     <li class="nav-item">
-    <a href="" class="nav-link {{ request()->is('*cajas*') ? 'active' : '' }}">
+    <a href="" class="nav-link {{ request()->is('*pagomovil*') ? 'active' : '' }}">
     <i class="far fa-circle nav-icon"></i>
     <p>Pago Movil</p>
     </a>
     </li>
 
     <li class="nav-item">
-    <a href="" class="nav-link {{ request()->is('*apertura*') ? 'active' : '' }}">
+    <a href="" class="nav-link {{ request()->is('*trasnferencias*') ? 'active' : '' }}">
     <i class="far fa-circle nav-icon"></i>
     <p>Transferencias</p>
     </a>
     </li>
     <li class="nav-item">
-    <a href="#" class="nav-link {{ request()->is('*cierre*') ? 'active' : '' }}" onclick="openModal()">
+    <a href="#" class="nav-link {{ request()->is('*pagooficina*') ? 'active' : '' }}" onclick="openModal()">
     <i class="far fa-circle nav-icon"></i>
     <p>Pago en Oficina</p>
     </a>
@@ -145,7 +145,7 @@
               </p>
             </a>
           </li>
-         
+
 @endcan
 
           <li class="nav-header">OTROS</li>
@@ -157,7 +157,7 @@
               </p>
             </a>
           </li>
-         
+
           <li class="nav-item">
            <a href="" class="nav-link {{ request()->is('*fqa*') ? 'active' : '' }}">
               <i class="nav-icon far fa-circle"></i>
@@ -167,14 +167,14 @@
             </a>
           </li>
 
-          
-          
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
 
     </div>
     <!-- /.sidebar -->
- 
+
   </aside>
 
