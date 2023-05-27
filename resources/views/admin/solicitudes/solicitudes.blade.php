@@ -54,7 +54,7 @@
                            <td>
 
 
-                               <a class="btn btn-info" href="{{route("solicitudes.actualizar.admin",['solicitudes' => $solicitud->id_contact])}}">
+                               <a class="btn btn-info" href="{{route("solicitudes.ver.admin",['solicitudes' => $solicitud->id_contact])}}">
                                    <i class="fa fa-eye"></i>
                                </a>
 

@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reclamos extends Model
+class MetodoPago extends Model
 {
     use HasFactory;
 
-    protected $table = 'reclamos';
+    protected $table = 'metodos_pago';
 
     public $timestamps = false;
 
-    protected $primaryKey = 'id_reclamo';
-
+    protected $primaryKey = 'id_metodo';
 }
