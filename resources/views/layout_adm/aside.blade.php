@@ -75,10 +75,10 @@
     <i class="far fa-circle nav-icon"></i>
     <p>Pago Movil</p>
     </a>
-    </li>
+    </li> 
 
     <li class="nav-item">
-    <a href="" class="nav-link {{ request()->is('*trasnferencias*') ? 'active' : '' }}">
+    <a href="{{ route('pagos.transferencias')}}" class="nav-link {{ request()->is('*trasnferencias*') ? 'active' : '' }}">
     <i class="far fa-circle nav-icon"></i>
     <p>Transferencias</p>
     </a>

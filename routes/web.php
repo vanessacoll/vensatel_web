@@ -33,6 +33,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Pagos 
+Route::get('pago/transferencias', [App\Http\Controllers\PagosController::class, 'index'])->name('pagos.transferencias');
+
 
 Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'], function () {
    echo Artisan::call('config:clear');
