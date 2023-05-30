@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Auth;
 error_reporting(E_ALL);
 class PagosController extends Controller
 {
+
+    public function index(){
+
+        return view('pagos.transferencias');
+    }
+
     public function PagoMovil(){
 
         $conceptoPagos = ConceptoPago::all();

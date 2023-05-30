@@ -40,6 +40,8 @@ Route::get('/pagos/pago_movil', [PagosController::class, 'PagoMovil'])->name('pa
 
 Route::get('pagos/pago_movil/registrar',[PagosController::class, 'RegistrarPagoMovil'])->name('pago.movil.registrar');
 
+Route::get('pago/transferencias', [App\Http\Controllers\PagosController::class, 'index'])->name('pagos.transferencias');
+
 
 Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'], function () {
    echo Artisan::call('config:clear');
