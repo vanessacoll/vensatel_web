@@ -47,7 +47,7 @@
 
                        <tr>
 
-                           <td>{{$pago->cliente}}</td>
+                           <td>{{$pago->user->name}}</td>
                            <td>{{$pago->status->descripcion}}</td>
                            <td>{{$pago->metodo->descripcion}}</td>
                            <td>{{$pago->concepto->descripcion}}</td>
