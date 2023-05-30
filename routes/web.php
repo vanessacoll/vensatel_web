@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,7 +36,10 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Pagos 
+Route::get('/pagos/pago_movil', [PagosController::class, 'PagoMovil'])->name('pago.movil');
+
+Route::get('pagos/pago_movil/registrar',[PagosController::class, 'RegistrarPagoMovil'])->name('pago.movil.registrar');
+
 Route::get('pago/transferencias', [App\Http\Controllers\PagosController::class, 'index'])->name('pagos.transferencias');
 
 
@@ -65,7 +71,7 @@ Route::get('admin/pagos',[App\Http\Controllers\Admin\PagosController::class, 'in
 
 Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
 
-Route::get('admin/pagos/ver/{solicitudes}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
+Route::get('admin/pagos/ver/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
 
 
 

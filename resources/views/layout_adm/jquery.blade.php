@@ -268,3 +268,22 @@
 
 <script src="/adminlte/dist/js/adminlte.min.js?v=3.2.0"></script>
 
+<script>
+    // Obtener el select y el campo adicional
+    const selectConcepto = document.getElementById('concepto');
+    const campoAdicional = document.getElementById('campoAdicional');
+
+    // Agregar un listener al evento change del select
+    selectConcepto.addEventListener('change', function() {
+        // Obtener el valor seleccionado
+        const selectedValue = selectConcepto.value;
+
+        // Mostrar u ocultar el campo adicional dependiendo del valor seleccionado
+        if (selectedValue === '1') {
+            campoAdicional.style.display = 'block';
+        } else {
+            campoAdicional.style.display = 'none';
+        }
+    });
+</script>
+
