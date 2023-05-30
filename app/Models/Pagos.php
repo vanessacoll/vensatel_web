@@ -15,6 +15,23 @@ class Pagos extends Model
 
     protected $primaryKey = 'id_pago';
 
+    protected $fillable = [
+        'id_pago',
+        'id_usuario',
+        'id_metodo',
+        'comprobante',
+        'referencia',
+        'fecha',
+        'id_contact',
+        'telefono',
+        'id_status',
+        'monto',
+        'id_concepto',
+        'hora',
+        'id_oficina',
+
+    ];
+
     public function status()
     {
     return $this->belongsTo('App\Models\Status', 'id_status', 'id_status');
@@ -28,6 +45,11 @@ class Pagos extends Model
     public function concepto()
     {
     return $this->belongsTo('App\Models\ConceptoPago', 'id_concepto', 'id_concepto');
+    }
+
+    public function user()
+    {
+    return $this->belongsTo('App\Models\User', 'id_usuario', 'id');
     }
 
 }
