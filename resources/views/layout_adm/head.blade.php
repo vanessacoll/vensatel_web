@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
-  
+
   <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
    <link rel="stylesheet" href="/adminlte/dist/css/login.css">
 
- 
+
   <link rel="shortcut icon" sizes="192x192" href="{{ asset('/adminlte/dist/img/logo.png') }}">
 
 
@@ -49,8 +49,7 @@
 
 <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css?v=3.2.0">
 
- 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.js"></script> 
-
+@livewireStyles
+@livewireScripts
 
 </head>

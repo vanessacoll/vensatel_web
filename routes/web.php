@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/pagos/pago_movil', [PagosController::class, 'PagoMovil'])->name('pago.movil');
+
+Route::get('pagos/pago_movil/registrar',[PagosController::class, 'RegistrarPagoMovil'])->name('pago.movil.registrar');
+
 
 Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'], function () {
    echo Artisan::call('config:clear');
@@ -48,6 +55,8 @@ Route::get('admin/solicitudes',[App\Http\Controllers\Admin\SolicitudesController
 
 Route::get('admin/solicitudes/update/{solicitudes}',[App\Http\Controllers\Admin\SolicitudesController::class, 'actualizar_solicitudes'])->name('solicitudes.actualizar.admin');
 
+Route::get('admin/solicitudes/ver/{solicitudes}',[App\Http\Controllers\Admin\SolicitudesController::class, 'solicitudes_ver'])->name('solicitudes.ver.admin');
+
 //Reclamos
 
 Route::get('admin/reclamos',[App\Http\Controllers\Admin\ReclamosController::class, 'index'])->name('reclamos.index.admin');
@@ -56,9 +65,12 @@ Route::get('admin/reclamos/update/{reclamos}',[App\Http\Controllers\Admin\Reclam
 
 //Pagos
 
-Route::get('admin/pagos',[App\Http\Controllers\Admin\SolicitudesController::class, 'index'])->name('pagos.index.admin');
+Route::get('admin/pagos',[App\Http\Controllers\Admin\PagosController::class, 'index'])->name('pagos.index.admin');
 
-Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\SolicitudesController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
+Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
+
+Route::get('admin/pagos/ver/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
+
 
 
 });

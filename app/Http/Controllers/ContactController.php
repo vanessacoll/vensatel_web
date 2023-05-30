@@ -81,16 +81,6 @@ public function Suscribir(Request $request)
     // Obtener la fecha actual
     $date = now()->locale('es');
 
-    // Crear un registro en la tabla de suscriptores
-    $mail = new Suscribe($request->input());
-    $mail->name = $request->nombres;
-    $mail->email = $email;
-    $mail->telefono = $request->telefono;
-    $mail->coordenadas = $request->latitud.','.$request->longitud;
-    $mail->direccion = $request->direccion;
-    $mail->id_inmueble = $request->inmueble;
-    $mail->date = $date;
-    $mail->saveOrFail();
 
     // Generar una contraseña aleatoria
     $password = Str::random();
@@ -108,6 +98,19 @@ public function Suscribir(Request $request)
 
     // Asignar el rol "Cliente" al usuario
     $user->assignRole('Cliente');
+
+    // Crear un registro en la tabla de suscriptores
+    $mail = new Suscribe($request->input());
+    $mail->name = $request->nombres;
+    $mail->email = $email;
+    $mail->telefono = $request->telefono;
+    $mail->coordenadas = $request->latitud.','.$request->longitud;
+    $mail->direccion = $request->direccion;
+    $mail->id_inmueble = $request->inmueble;
+    $mail->date = $date;
+    $mail->id_usuario = $user->id;
+    $mail->id_status = 1;
+    $mail->saveOrFail();
 
     // Crear un objeto con los datos para el envío de correo al usuario
     $objDemoUser = (object) [
