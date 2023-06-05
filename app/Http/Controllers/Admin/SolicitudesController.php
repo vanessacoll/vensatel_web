@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\Suscribe;
 use App\Models\User;
 use App\Models\Status;
+use App\Models\Pagos;
 
 class SolicitudesController extends Controller
 {
@@ -29,22 +30,30 @@ class SolicitudesController extends Controller
     public function actualizar_solicitudes(Request $request, Suscribe $solicitudes)
     {
 
+
+        $user = User::where('id', $solicitudes->id_usuario)->first();
         
         if($request->id_status == 3){
 
-        $user = User::where('id', $solicitudes->id_usuario)->first();
-
-        // Asignar el rol "Cliente Aprobado" al usuario
         $user->assignRole('Cliente Aprobado');
 
         }elseif($request->id_status == 7){
 
         //Aca hay que consultar si el pago esta confirmado
+        $pagos = Pagos::where('id_contact', $solicitudes->id_contact)->first();
 
-        $user = User::where('id', $solicitudes->id_usuario)->first();
+            if($pagos && ($pagos->id_status == 6)){
 
-        // Asignar el rol "Suscriptor" al usuario
-        $user->assignRole('Suscriptor');
+             $user->assignRole('Suscriptor');
+
+             }else{
+
+                return back()->with('process_result', [
+                    'status' => 'error',
+                    'content' => 'Esta solicitud no posee pago registrado o confirmado',
+                ]);
+                die();
+             }
 
         }
 

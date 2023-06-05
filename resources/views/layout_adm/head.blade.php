@@ -49,6 +49,8 @@
 
 <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css?v=3.2.0">
 
+@yield('styles')
+
 @livewireStyles
 @livewireScripts
 

@@ -1,8 +1,8 @@
- 	    	<script type="text/javascript" src="template/jquery.min.js"></script>
-        <script type="text/javascript" src="template/bootstrap.min.js"></script>
-        <script type="text/javascript" src="template/plugins.js"></script>
+ 	    <script type="text/javascript" src="{{asset("template/jquery.min.js")}}"></script>
+        <script type="text/javascript" src="{{asset("template/bootstrap.min.js")}}"></script>
+        <script type="text/javascript" src="{{asset("template/plugins.js")}}"></script>
 
-        <script type="text/javascript" src="template/main.js"></script>
+        <script type="text/javascript" src="{{asset("template/main.js")}}"></script>
 
         <script>
 function enviar(){
@@ -19,7 +19,7 @@ function enviar(){
                      email: jQuery('#cf-email').val(),
                      subject: jQuery('#cf-subject').val(),
                      message: jQuery('#cf-message').val(),
-                       
+
                   },
                   success: function(result){
 
@@ -34,7 +34,7 @@ function enviar(){
                     }
                     else
                     {
-                      
+
                       alert("hola");
 
                     // $('#text1').text(result.success.plan);
@@ -69,7 +69,7 @@ function enviar_sus(){
                      inmueble: jQuery('#inmueble').val(),
                      latitude: jQuery('#address_latitude').val(),
                      longitude: jQuery('#address_longitude').val(),
-                       
+
                   },
                   success: function(result){
 
@@ -84,7 +84,7 @@ function enviar_sus(){
                     }
                     else
                     {
-                      
+
                       alert("hola1");
 
                     // $('#text1').text(result.success.plan);
@@ -104,8 +104,8 @@ function enviar_sus(){
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initAutocomplete&libraries=places&v=weekly"async></script>
 
 <script>
-	
-	// This method will be initialised by our script call-back 
+
+	// This method will be initialised by our script call-back
 function initAutocomplete() {
     $('form').on('keyup keypress', function(e) {
         var keyCode = e.keyCode || e.which;
@@ -114,7 +114,7 @@ function initAutocomplete() {
             return false;
         }
     });
-  // here we are getting the input keywords in locationInput constant 
+  // here we are getting the input keywords in locationInput constant
     const locationInputs = document.getElementsByClassName("map-input");
 
     const autocompletes = [];
@@ -128,11 +128,11 @@ function initAutocomplete() {
         const latitude = parseFloat(document.getElementById(fieldKey + "-latitude").value) || -33.8688;
         const longitude = parseFloat(document.getElementById(fieldKey + "-longitude").value) || 151.2195;
 
-        
+
         const autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.key = fieldKey;
         autocompletes.push({input: input , autocomplete: autocomplete});
-      // manipulating our latitude and longitude to send it to autocomplete method 
+      // manipulating our latitude and longitude to send it to autocomplete method
     }
 
     for (let i = 0; i < autocompletes.length; i++) {
@@ -141,7 +141,7 @@ function initAutocomplete() {
 
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
             const place = autocomplete.getPlace();
-            // this place variable will fetch the places mathed to your keyword 
+            // this place variable will fetch the places mathed to your keyword
             geocoder.geocode({'placeId': place.place_id}, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     const lat = results[0].geometry.location.lat();

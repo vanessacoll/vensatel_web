@@ -47,7 +47,7 @@
 @can('solicitudes')
 
           <li class="nav-item">
-            <a href="" class="nav-link {{ request()->is('*solicitudes*') ? 'active' : '' }}">
+            <a href="{{ route('solicitudes') }}" class="nav-link {{ request()->is('*solicitudes*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-store"></i>
               <p>
                Solicitudes de Servicio

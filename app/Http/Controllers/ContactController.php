@@ -40,7 +40,7 @@ class ContactController extends Controller
         $mail->email   = $request->email;
         $mail->subject = $request->subject;
         $mail->message = $request->message;
-        $mail->date   = $date;
+        $mail->date    = $date;
         $mail->saveOrFail();
 
 
