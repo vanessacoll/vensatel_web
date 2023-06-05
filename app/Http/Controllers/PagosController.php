@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Auth;
 error_reporting(E_ALL);
 class PagosController extends Controller
 {
+
+    public function index(){
+
+        return view('pagos.transferencias');
+    }
+
     public function PagoMovil(){
 
         $conceptoPagos = ConceptoPago::all();
@@ -115,7 +121,7 @@ class PagosController extends Controller
 
                 $solicitud = Suscribe::where('id_contact',$request->solicitud)->exists();
 
-                if($solicitud){
+                if($solicitud && !$pagos){
 
                 $pago = Pagos::create(
                     ['id_usuario' => Auth::user()->id,
@@ -132,7 +138,7 @@ class PagosController extends Controller
                 }else{
 
                     $status = 'error';
-                    $content = 'No existe solicitud ingresada con ese numero';
+                    $content = 'No existe solicitud ingresada con ese numero o ya tiene un pago asociado';
 
                          return redirect()->route("pago.movil")->with('process_result',[
                             'status' => $status,

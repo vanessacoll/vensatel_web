@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label>Fecha de Pago:</label>
                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="text" name="fecha" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                            <input type="text" name="fecha" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Ingrese fecha de Pago" />
                             <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>

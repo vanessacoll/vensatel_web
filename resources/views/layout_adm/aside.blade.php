@@ -47,7 +47,7 @@
 @can('solicitudes')
 
           <li class="nav-item">
-            <a href="" class="nav-link {{ request()->is('*solicitudes*') ? 'active' : '' }}">
+            <a href="{{ route('solicitudes') }}" class="nav-link {{ request()->is('*solicitudes*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-store"></i>
               <p>
                Solicitudes de Servicio
@@ -75,10 +75,10 @@
     <i class="far fa-circle nav-icon"></i>
     <p>Pago Movil</p>
     </a>
-    </li>
+    </li> 
 
     <li class="nav-item">
-    <a href="" class="nav-link {{ request()->is('*trasnferencias*') ? 'active' : '' }}">
+    <a href="{{ route('pagos.transferencias')}}" class="nav-link {{ request()->is('*trasnferencias*') ? 'active' : '' }}">
     <i class="far fa-circle nav-icon"></i>
     <p>Transferencias</p>
     </a>
