@@ -10,19 +10,19 @@
         <meta name="author" content="Erilisdesign.com">
 
         <!-- CSS Global Compulsory -->
-        <link rel="stylesheet" href="template/css/bootstrap.min.css">
-        <link rel="stylesheet" href="template/css/style.css">
+        <link rel="stylesheet" href="{{asset("template/css/bootstrap.min.css")}}">
+        <link rel="stylesheet" href="{{asset("template/css/style.css")}}">
 
         <!-- CSS Implementing Plugins -->
-        <link rel="stylesheet" href="template/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="template/css/ionicons.min.css" type="text/css">
-        <link rel="stylesheet" href="template/css/animate.min.css" type="text/css">
-        <link rel="stylesheet" href="template/css/flexslider.css" type="text/css">
-        <link rel="stylesheet" href="template/css/magnific-popup.css" type="text/css">
-        <link rel="stylesheet" href="template/css/vegas.min.css" type="text/css">
-        <link rel="stylesheet" href="template/css/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="{{asset("template/css/font-awesome.min.css")}}" type="text/css">
+        <link rel="stylesheet" href="{{asset("template/css/ionicons.min.css")}}" type="text/css">
+        <link rel="stylesheet" href="{{asset("template/css/animate.min.css")}}" type="text/css">
+        <link rel="stylesheet" href="{{asset("template/css/flexslider.css")}}" type="text/css">
+        <link rel="stylesheet" href="{{asset("template/css/magnific-popup.css")}}" type="text/css">
+        <link rel="stylesheet" href="{{asset("template/css/vegas.min.css")}}" type="text/css">
+        <link rel="stylesheet" href="{{asset("template/css/jquery.mCustomScrollbar.min.css")}}">
 
-        <link rel="stylesheet" href="template/css/custom.css">
+        <link rel="stylesheet" href="{{asset("template/css/custom.css")}}">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>

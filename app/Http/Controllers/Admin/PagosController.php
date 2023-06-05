@@ -34,7 +34,7 @@ class PagosController extends Controller
         $status = 'success';
         $content = 'Estatus Actualizado exitosamente';
 
-    return redirect()->route("solicitudes.index.admin")->with('process_result',[
+    return redirect()->route("pagos.index.admin")->with('process_result',[
                 'status' => $status,
                 'content' => $content,
            ]);
