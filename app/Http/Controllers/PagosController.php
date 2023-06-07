@@ -4,19 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ConceptoPago;
+use App\Models\Pago;
+use App\Models\MetodoPago;
 use App\Models\Pagos;
 use App\Models\Suscribe;
 use App\Api\AesCipher;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 
 error_reporting(E_ALL);
 class PagosController extends Controller
 {
+    private $disk ="comprobante";
+
+
+    public function oficina(){
+
+        return view('pagos.pago_en_oficina');
+    }
 
     public function index(){
 
-        return view('pagos.transferencias');
+        $metodoPago = metodoPago::whereIn('id_metodo',[2,3])->get();
+        $conceptoPagos = ConceptoPago::all();
+
+        return view('pagos.transferencias',compact('conceptoPagos','metodoPago'));
     }
 
     public function PagoMovil(){
@@ -24,6 +38,52 @@ class PagosController extends Controller
         $conceptoPagos = ConceptoPago::all();
 
         return view('user.pagos.pago_movil',compact('conceptoPagos'));
+    }
+
+    // public function transferencia(Request $request){
+        
+    //   $pago = $request->validator(
+    //     [
+
+    //       'id_pago',
+    //       'id_usuario',
+    //       'id_metodo',
+    //       'comprobante',
+    //       'referencia',
+    //       'fecha',
+    //       'id_contact',
+    //       'telefono',
+    //       'id_status',
+    //       'monto',
+    //       'id_concepto',
+    //       'hora',
+    //       'id_oficina',
+    //     ]
+    //     );
+    // }
+
+    public function transferencia(Request $request)
+    {
+
+        $date = Carbon::now();
+        $file = $request->file;
+        $name = Auth::user()->id.$date.$file->getClientOriginalName(); 
+        $file->storeAs('',$name,$this->disk);  
+
+        $flight = new Pagos;
+        $flight->id_usuario = Auth::user()->id ;
+        $flight->id_metodo = $request->id_metodo;
+        $flight->fecha = $request->fecha; 
+        $flight->referencia = $request->referencia;
+        $flight->monto = $request->monto;
+        $flight->comprobante = $name;
+        $flight->id_concepto = $request->id_concepto;
+        $flight->id_contact = $request->id_contact;
+        $flight->id_status = '5'; 
+        $flight->save();
+       
+        return redirect()->route('pagos.transferencias');
+
     }
 
     public function RegistrarPagoMovil(Request $request){
@@ -186,4 +246,5 @@ class PagosController extends Controller
 
          }*/
     }
+
 }

@@ -10,6 +10,7 @@ class ConceptoPago extends Model
     use HasFactory;
 
     protected $table = 'concepto_pago';
+    
 
     public $timestamps = false;
 

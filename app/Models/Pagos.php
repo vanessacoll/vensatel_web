@@ -16,7 +16,6 @@ class Pagos extends Model
     protected $primaryKey = 'id_pago';
 
     protected $fillable = [
-        'id_pago',
         'id_usuario',
         'id_metodo',
         'comprobante',
