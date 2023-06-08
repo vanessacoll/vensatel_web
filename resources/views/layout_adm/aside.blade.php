@@ -84,7 +84,7 @@
     </a>
     </li>
     <li class="nav-item">
-    <a href="#" class="nav-link {{ request()->is('*pagooficina*') ? 'active' : '' }}" onclick="openModal()">
+    <a href="{{ route('pagos.pago_en_oficina') }}" class="nav-link {{ request()->is('*pagooficina*') ? 'active' : '' }}" onclick="openModal()">
     <i class="far fa-circle nav-icon"></i>
     <p>Pago en Oficina</p>
     </a>
