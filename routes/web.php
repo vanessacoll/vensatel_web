@@ -85,5 +85,21 @@ Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosControl
 Route::get('admin/pagos/ver/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
 
 
+//Usuarios
+
+
+Route::get('/usuarios',[App\Http\Controllers\Auth\RegisterController::class, 'search'])->name('register.search');
+
+Route::get('/usuarios/{user}/editar',[App\Http\Controllers\Auth\RegisterController::class, 'edit'])
+    ->name('register.edit');
+
+Route::get('/usuarios/{user}',[App\Http\Controllers\Auth\RegisterController::class, 'destroy'])
+    ->name('register.destroy');
+
+Route::get('/usuariosup/{user}',[App\Http\Controllers\Auth\RegisterController::class, 'update'])
+    ->name('register.update');
+
+
+
 
 });
