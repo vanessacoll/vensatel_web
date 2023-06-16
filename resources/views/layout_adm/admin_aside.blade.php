@@ -2,8 +2,9 @@
     <!-- Brand Logo -->
 
      <a href="/home" class="brand-link" >
-       <img src="" alt="Logo" class="brand-image" >
-       <span class="brand-text font-weight-light">Vensatel</b></span>
+       <img src="{{ asset('template/images/logovensatelblanco.png') }}" alt="Logo" class="brand-image"  style="width: 90%">
+       <span class="brand-text font-weight-light"></b>.</span>
+
     </a>
 
     <!-- Sidebar -->
@@ -72,6 +73,24 @@
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                Reclamos
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('reclamos.index.admin') }}" class="nav-link  {{ request()->is('*reclamos*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>
+               Oficinas
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('register.search') }}" class="nav-link  {{ request()->is('*usuarios*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user-alt"></i>
+              <p>
+               Usuarios
               </p>
             </a>
           </li>

@@ -25,9 +25,8 @@
    <link rel="stylesheet" href="/adminlte/dist/css/login.css">
 
 
-  <link rel="shortcut icon" sizes="192x192" href="{{ asset('/adminlte/dist/img/logo.png') }}">
 
-
+  <link rel="shortcut icon" href="{{ asset('template/images/icono.png') }}">
 
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
