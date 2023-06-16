@@ -96,7 +96,7 @@
                         <div class="form-group">
                             <label for="concepto">Concepto de pago</label>
                             <select required name="id_concepto" class="form-control" style="width: 100%;" id="concepto">
-                                <option value="">Seleccione</option>
+                                <option value="">Seleccione concepto</option>
                                 @foreach($conceptoPagos as $concepto)
                                 <option value="{{$concepto->id_concepto}}">
                                     {{$concepto->descripcion}}
