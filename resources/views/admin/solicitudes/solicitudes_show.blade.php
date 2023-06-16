@@ -23,7 +23,7 @@
 <div class="container-fluid">
 
     <div class="row">
-    
+
 
        <div class="col-md-12">
           <div class="card card-primary card-outline">
@@ -37,9 +37,9 @@
                @method("PUT")
                 @csrf
 
-                @php 
+                @php
 
-                $disabled = ''; 
+                $disabled = '';
                  if($solicitudes->id_status == 4 || $solicitudes->id_status == 7 || $solicitudes->id_status == 8){
                  $disabled = 'disabled';
                 }
@@ -53,7 +53,7 @@
                 <p class=" shadow-none">
                 <strong>Cliente:</strong> {{ $solicitudes->name }}</p>
                 <p class=" shadow-none">
-                <strong>Email:</strong> {{$solicitudes->email}} 
+                <strong>Email:</strong> {{$solicitudes->email}}
                 <p class=" shadow-none">
                 <strong><a href="https://www.google.com/maps/search/?api=1&query={{ $solicitudes->coordenadas }}" target="_blank">Ver Ubicacion</a></strong>
 
@@ -88,7 +88,7 @@
                 <p class=" shadow-none">
                 <strong>Telefono:</strong> {{ $solicitudes->telefono }}</p>
 
-                    
+
                 <p class=" shadow-none">
                 <strong>Direccion:</strong> {{ $solicitudes->direccion }}</p>
 
@@ -100,7 +100,7 @@
 
                 </div>
 
-                     
+
             </div>
 
             <div class="card-footer">
@@ -109,7 +109,7 @@
 <a class="btn btn-default float-right" href="{{ route('solicitudes.index.admin') }}">Cerrar</a>
 </div>
           </div>
-          </form> 
+          </form>
           <!-- /.box -->
         </div>
 

@@ -51,4 +51,9 @@ class Pagos extends Model
     return $this->belongsTo('App\Models\User', 'id_usuario', 'id');
     }
 
+    public function oficinas()
+    {
+    return $this->belongsTo('App\Models\User', 'id_oficina', 'id_oficina');
+    }
+
 }

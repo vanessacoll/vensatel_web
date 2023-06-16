@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagosController;
+use App\Http\Controllers\SolicitudesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,14 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/pagos/pago_movil', [PagosController::class, 'PagoMovil'])->name('pago.movil');
+
+Route::get('/solicitudes', [SolicitudesController::class, 'solicitudes'])->name('solicitudes');
+
+Route::get('/solicitudes/crear', [SolicitudesController::class, 'solicitudesCrear'])->name('solicitudes.crear');
+
+Route::get('/solicitudes/registrar', [SolicitudesController::class, 'solicitudesRegistrar'])->name('solicitudes.registrar');
+
+Route::get('solicitudes/ver/{solicitudes}',[SolicitudesController::class, 'solicitudesVer'])->name('solicitudes.ver');
 
 Route::get('pagos/pago_movil/registrar',[PagosController::class, 'RegistrarPagoMovil'])->name('pago.movil.registrar');
 
@@ -75,6 +84,22 @@ Route::get('admin/pagos',[App\Http\Controllers\Admin\PagosController::class, 'in
 Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
 
 Route::get('admin/pagos/ver/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
+
+
+//Usuarios
+
+
+Route::get('/usuarios',[App\Http\Controllers\Auth\RegisterController::class, 'search'])->name('register.search');
+
+Route::get('/usuarios/{user}/editar',[App\Http\Controllers\Auth\RegisterController::class, 'edit'])
+    ->name('register.edit');
+
+Route::get('/usuarios/{user}',[App\Http\Controllers\Auth\RegisterController::class, 'destroy'])
+    ->name('register.destroy');
+
+Route::get('/usuariosup/{user}',[App\Http\Controllers\Auth\RegisterController::class, 'update'])
+    ->name('register.update');
+
 
 
 
