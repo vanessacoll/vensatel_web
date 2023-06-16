@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ConceptoPago;
 use App\Models\Pago;
 use App\Models\MetodoPago;
+use App\Models\oficinas;
 use App\Models\Pagos;
 use App\Models\Suscribe;
 use App\Api\AesCipher;
@@ -22,8 +23,29 @@ class PagosController extends Controller
 
     public function oficina(){
 
-        return view('pagos.pago_en_oficina');
+        $oficinas = oficinas::all();
+        $conceptoPagos = ConceptoPago::all();
+
+        return view('pagos.pago_en_oficina',compact('oficinas','conceptoPagos'));
     }
+
+    public function CitaOficina(Request $request)
+    {
+
+        $flight = new Pagos;
+        $flight->id_usuario = Auth::user()->id ;
+        $flight->id_oficina = $request->id_oficina;
+        $flight->fecha = $request->fecha; 
+        $flight->hora = $request->hora;
+        $flight->id_concepto = $request->id_concepto;
+        $flight->id_contact = $request->id_contact;
+        $flight->id_status = '1'; 
+        $flight->save();
+       
+        return redirect()->route('pagos.pago_en_oficina');
+
+    }
+
 
     public function index(){
 
