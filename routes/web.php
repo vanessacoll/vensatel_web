@@ -50,7 +50,8 @@ Route::get('solicitudes/ver/{solicitudes}',[SolicitudesController::class, 'solic
 Route::get('pagos/pago_movil/registrar',[PagosController::class, 'RegistrarPagoMovil'])->name('pago.movil.registrar');
 
 Route::post('pago/transferencias-comprobante', [App\Http\Controllers\PagosController::class, 'transferencia'])->name('pagos.transferencias-comprobante');
-Route::get('pago/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'oficina'])->name('pagos.pago_en_oficina');
+Route::get('pago/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'oficina'])->name('pagos.pago_en_oficina');  
+Route::post('pago/cita/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'CitaOficina'])->name('pagos.pago_en_oficinaCita');  
 Route::get('pago/transferencias', [App\Http\Controllers\PagosController::class, 'index'])->name('pagos.transferencias');
 
 
