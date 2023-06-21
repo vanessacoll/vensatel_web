@@ -24,7 +24,7 @@
 
     <div class="row">
            <div class="col-md-12">
-             <div class="card card-primary card-outline">
+             <div class="card card-primary">
                <div class="card-header">
                  <h3 class="card-title">Listado de Usuarios</h3>
                </div>
@@ -54,11 +54,11 @@
                         <td>
 
 
-                               <a class="btn btn-danger" href="{{route("register.destroy",['user' => $user->id])}}">
+                               <a class="btn btn-primary" href="{{route("register.destroy",['user' => $user->id])}}">
                                    <i class="fa fa-trash"></i>
                                </a>
 
-                               <a class="btn btn-warning" href="{{route("register.edit",['user' => $user->id])}}">
+                               <a class="btn btn-primary" href="{{route("register.edit",['user' => $user->id])}}">
                                    <i class="fa fa-edit"></i>
                                </a>
 

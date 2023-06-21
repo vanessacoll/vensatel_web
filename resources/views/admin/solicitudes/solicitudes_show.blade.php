@@ -26,7 +26,7 @@
 
 
        <div class="col-md-12">
-          <div class="card card-primary card-outline">
+          <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Datos de la Solicitud #{{ $solicitudes->id_contact }}</h3>
             </div>
@@ -113,6 +113,15 @@
           <!-- /.box -->
         </div>
 
+        @if($solicitudes->id_status == 3 && is_null($deuda))
+
+        @include('admin.solicitudes.formregistrodeuda')
+
+        @elseif($deuda)
+
+        @include('admin.solicitudes.deuda')
+
+        @endif
 
 
            <div class="col-md-12">
