@@ -9,6 +9,10 @@ use App\Models\Suscribe;
 use App\Models\User;
 use App\Models\Status;
 use App\Models\Pagos;
+use App\Models\Plan;
+use App\Models\Deuda;
+use Carbon\Carbon;
+
 
 class SolicitudesController extends Controller
 {
@@ -22,8 +26,10 @@ class SolicitudesController extends Controller
    public function solicitudes_ver(Suscribe $solicitudes)
     {
 
+        $planes = Plan::all();
+        $deuda = Deuda::where('id_contact',$solicitudes->id_contact)->get();
     	$statuses = Status::whereIn('id_status',['1','2','3','4','7','8'])->get();
-        return view('admin.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes],compact('statuses'));
+        return view('admin.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes],compact('statuses','deuda','planes'));
 
     }
 
@@ -67,6 +73,40 @@ class SolicitudesController extends Controller
                 'status' => $status,
                 'content' => $content,
            ]);
+
+    }
+
+    public function solicitudes_deuda(Request $request, Suscribe $solicitudes)
+    {
+
+
+        $user = User::where('id', $solicitudes->id_usuario)->first();
+        $date = now()->locale('es');
+        
+        $deuda = new Deuda($request->input());
+        $deuda->id_usuario      = $user->id;
+        $deuda->id_plan         = $request->id_plan;
+        $deuda->fecha           = $date; 
+        $deuda->monto           = $request->monto;
+        if($request->monto_e != '0.00'){
+        $deuda->monto_extra     = $request->monto_e;
+        $deuda->concepto_extra  = $request->concepto;
+        }
+        $deuda->id_status       = '1';
+        $deuda->id_concepto     = '1';
+        $deuda->id_contact      = $solicitudes->id_contact;
+        $deuda->save();   
+
+        $solicitudes->pago      = true;
+        $solicitudes->saveOrFail();
+   
+        $status = 'success';
+        $content = 'Deuda Registrada exitosamente';
+
+    return back()->with('process_result', [
+        'status' => $status,
+        'content' => $content,
+    ]);
 
     }
 

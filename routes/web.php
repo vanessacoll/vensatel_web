@@ -71,6 +71,8 @@ Route::get('admin/solicitudes/update/{solicitudes}',[App\Http\Controllers\Admin\
 
 Route::get('admin/solicitudes/ver/{solicitudes}',[App\Http\Controllers\Admin\SolicitudesController::class, 'solicitudes_ver'])->name('solicitudes.ver.admin');
 
+Route::get('admin/solicitudes/deuda/{solicitudes}',[App\Http\Controllers\Admin\SolicitudesController::class, 'solicitudes_deuda'])->name('solicitudes.deuda.admin');
+
 //Reclamos
 
 Route::get('admin/reclamos',[App\Http\Controllers\Admin\ReclamosController::class, 'index'])->name('reclamos.index.admin');

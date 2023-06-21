@@ -58,7 +58,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+           // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -74,6 +74,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'isAdmin' => '1',
+            'cedula' => $data['cedula'],
+            'telefono' => $data['telefono'],
         ]);
     }
 
@@ -84,6 +87,39 @@ class RegisterController extends Controller
 
         return view('auth.register_search',compact('users'));
 
+    }
+
+
+    public function destroy(User $user)
+    {
+
+        $user->delete();
+        return redirect()->route("register.search")->with(["message" => "Usuario eliminado"]);
+    }
+
+
+     public function edit(User $user)
+    {
+        return view("auth.register_edit", ['user' => $user]);
+    }
+
+
+    public function update(Request $request, User $user)
+    {
+        //$this->validator($request->all())->validate();
+
+
+        $user->name     = $request->name;
+        $user->email    = $request->email;
+        $user->cedula   = $request->cedula;
+        $user->telefono = $request->telefono;
+        if($request->password){
+        $user->password = Hash::make($request->password);
+        }
+        $user->saveOrFail();
+
+
+    return redirect()->route("register.search")->with(["message" => "Usuario actualizado exitosamente"]);
     }
     
 }

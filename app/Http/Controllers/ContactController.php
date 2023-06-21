@@ -93,7 +93,8 @@ public function Suscribir(Request $request)
         'password' => Hash::make($password),
         'suscriptor' => 'N',
         'direccion' => $request->direccion,
-        'cedula' => $request->cedula
+        'cedula' => $request->cedula,
+        'telefono' => $request->telefono
     ]);
 
     // Asignar el rol "Cliente" al usuario
