@@ -28,6 +28,7 @@ class Suscribe extends Model
         'coordenadas',
         'direccion',
         'date',
+        'pago',
 
     ];
 

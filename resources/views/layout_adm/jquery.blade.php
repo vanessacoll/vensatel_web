@@ -246,3 +246,66 @@
     });
 </script>
 
+<script>
+  function habilitarInput() {
+    var checkbox = document.getElementById("customCheckbox1");
+    var input = document.getElementById("password");
+
+    if (checkbox.checked) {
+      input.disabled = false;
+    } else {
+      input.disabled = true;
+    }
+  }
+</script>
+
+
+<!--------------- Funciones del Formulario de Deuda ----------------->
+<script>
+    // Obtener elementos HTML relevantes
+    var planSelect = document.getElementById('planSelect');
+    var montoInput = document.getElementById('monto');
+    var montoEInput = document.getElementById('monto_e');
+    var totalInput = document.getElementById('total');
+    var checkbox = document.getElementById('habilitarCargosExtras');
+    var conceptoInput = document.getElementById('concepto');
+
+    // Agregar evento de cambio al seleccionar un plan
+    planSelect.addEventListener('change', function() {
+        var selectedOption = planSelect.options[planSelect.selectedIndex];
+        var monto = selectedOption.getAttribute('data-monto');
+
+        // Actualizar los campos "monto" y "total"
+        montoInput.value = monto;
+
+        actualizarTotal();
+
+    });
+
+    // Función para calcular y actualizar el valor total
+    function actualizarTotal() {
+        var monto = parseFloat(montoInput.value);
+        var montoE = parseFloat(montoEInput.value);
+
+        // Calcular el nuevo valor total sumando el monto y montoE
+        var nuevoTotal = monto + montoE;
+
+        // Actualizar el campo "total" con el nuevo valor
+        totalInput.value = nuevoTotal;
+    }
+
+    // Agregar eventos de cambio a los campos monto y monto_e
+    montoEInput.addEventListener('change', actualizarTotal);
+
+    checkbox.addEventListener('change', function() {
+    if (checkbox.checked) {
+      montoEInput.disabled = false;
+      conceptoInput.disabled = false;
+    } else {
+      montoEInput.disabled = true;
+      conceptoInput.disabled = true;
+    }
+  });
+</script>
+
+
