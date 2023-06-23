@@ -8,6 +8,7 @@ use App\Models\Pago;
 use App\Models\MetodoPago;
 use App\Models\oficinas;
 use App\Models\Pagos;
+use App\Models\Deuda;
 use App\Models\Suscribe;
 use App\Api\AesCipher;
 use Carbon\Carbon;
@@ -20,6 +21,16 @@ class PagosController extends Controller
 {
     private $disk ="comprobante";
 
+    public function pagos(){
+        
+        $deuda = Deuda::where('id_usuario',Auth::user()->id)->get();
+    
+        return view('user.pagos.pagos',compact('deuda'));
+    }
+
+    // public function dueda(){
+
+    // }
 
     public function oficina(){
 

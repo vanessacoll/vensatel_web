@@ -37,6 +37,10 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/pagos', [PagosController::class, 'pagos'])->name('user.pagos.pagos');
+
+// Route::get('/pagoss', [PagosController::class, 'deuda'])->name('user.pagos.pagosdeuda');
+
 Route::get('/pagos/pago_movil', [PagosController::class, 'PagoMovil'])->name('pago.movil');
 
 Route::get('/solicitudes', [SolicitudesController::class, 'solicitudes'])->name('solicitudes');

@@ -60,15 +60,15 @@
 @can('pagos')
 
           <li class="nav-item">
-            <a class="nav-link">
+            <a href="{{ route('user.pagos.pagos') }}" class="nav-link">
               <i class="nav-icon fas fas fa-cash-register"></i>
               <p>
               Pagos
-               <i class="fas fa-angle-left right"></i>
+               {{-- <i class="fas fa-angle-left right"></i> --}}
               </p>
             </a>
 
-<ul class="nav nav-treeview">
+{{-- <ul class="nav nav-treeview">
 
     <li class="nav-item">
     <a href="{{ route('pago.movil') }}" class="nav-link {{ request()->is('*pago_movil*') ? 'active' : '' }}">
@@ -90,7 +90,7 @@
     </a>
     </li>
 
-</ul>
+</ul> --}}
           </li>
 
 @endcan
