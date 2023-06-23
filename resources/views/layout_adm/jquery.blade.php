@@ -58,6 +58,10 @@
 
 <script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 
+<script src="/adminlte/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<script src="/adminlte/plugins/filterizr/jquery.filterizr.min.js"></script>
+
 
 <script>
     $(function () {
