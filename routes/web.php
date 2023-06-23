@@ -108,5 +108,10 @@ Route::get('/usuariosup/{user}',[App\Http\Controllers\Auth\RegisterController::c
 
 
 
+Route::get('/message',[App\Http\Controllers\ChatController::class, 'sendMessage'])
+    ->name('message');
+
+
+
 
 });

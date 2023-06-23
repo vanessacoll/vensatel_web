@@ -48,9 +48,8 @@
 
 <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css?v=3.2.0">
 
-@yield('styles')
+<link rel="stylesheet" href="/adminlte/plugins/ekko-lightbox/ekko-lightbox.css">
 
-@livewireStyles
-@livewireScripts
+@yield('styles')
 
 </head>

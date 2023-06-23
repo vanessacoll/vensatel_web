@@ -24,7 +24,7 @@
 
     <div class="row">
            <div class="col-md-12">
-             <div class="card card-primary card-outline">
+             <div class="card card-primary">
                <div class="card-header">
                  <h3 class="card-title">Listado de Pagos</h3>
                </div>
@@ -56,7 +56,7 @@
                            <td>
 
 
-                               <a class="btn btn-info" href="{{route("pagos.ver.admin",['pagos' => $pago->id_pago])}}">
+                               <a class="btn btn-primary" href="{{route("pagos.ver.admin",['pagos' => $pago->id_pago])}}">
                                    <i class="fa fa-eye"></i>
                                </a>
 

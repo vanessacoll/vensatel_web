@@ -84,10 +84,9 @@
 
 
            <div class="col-md-12">
-
-            @livewire("chat-form")
-
-            </div>
+        @include('chat.chat-form') 
+        </div>
+        
          </div>
 
 

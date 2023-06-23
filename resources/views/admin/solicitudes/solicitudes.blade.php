@@ -24,9 +24,9 @@
 
     <div class="row">
            <div class="col-md-12">
-             <div class="card card-primary card-outline">
+             <div class="card card-primary">
                <div class="card-header">
-                 <h3 class="card-title">Listado de Cajeros</h3>
+                 <h3 class="card-title">Listado de Solicitudes</h3>
                </div>
                <!-- /.box-header -->
                <div class="card-body">
@@ -54,7 +54,7 @@
                            <td>
 
 
-                               <a class="btn btn-info" href="{{route("solicitudes.ver.admin",['solicitudes' => $solicitud->id_contact])}}">
+                               <a class="btn btn-primary" href="{{route("solicitudes.ver.admin",['solicitudes' => $solicitud->id_contact])}}">
                                    <i class="fa fa-eye"></i>
                                </a>
 
