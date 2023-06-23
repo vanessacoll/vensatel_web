@@ -16,9 +16,22 @@
         </div>
       </div><!-- /.container-fluid -->
 
- @endsection
+      @endsection
 
 @section('contenido')
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+       <h5 class="card-title m-0"><i class="fas fa-credit-card"></i>BANCO MERCANTIL</h5>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">Telefono: 0424-9147616</h6>
+        <br>
+        <h6 class="card-title">Documento: J-41235318-7</h6>
+        <br>
+        <h6 class="card-title">Beneficiario: Vensatel</h6>
+    </div>
+</div>
 
 <div class="container-fluid">
 
