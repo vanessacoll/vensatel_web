@@ -11,6 +11,7 @@ use App\Models\Status;
 use App\Models\Pagos;
 use App\Models\Plan;
 use App\Models\Deuda;
+use App\Models\Message;
 use Carbon\Carbon;
 
 
@@ -26,10 +27,12 @@ class SolicitudesController extends Controller
    public function solicitudes_ver(Suscribe $solicitudes)
     {
 
+        $messages = Message::where('id_contact',$solicitudes->id_contact)
+                            ->where('id_usuario_to',$solicitudes->id_usuario)->get();
         $planes = Plan::all();
         $deuda = Deuda::where('id_contact',$solicitudes->id_contact)->get();
     	$statuses = Status::whereIn('id_status',['1','2','3','4','7','8'])->get();
-        return view('admin.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes],compact('statuses','deuda','planes'));
+        return view('admin.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes],compact('statuses','deuda','planes','messages'));
 
     }
 
