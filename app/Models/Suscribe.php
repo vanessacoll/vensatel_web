@@ -29,6 +29,7 @@ class Suscribe extends Model
         'direccion',
         'date',
         'pago',
+        'id_usuario',
 
     ];
 
@@ -37,5 +38,10 @@ class Suscribe extends Model
     public function status()
     {
     return $this->belongsTo('App\Models\Status', 'id_status', 'id_status');
+    }
+
+    public function user()
+    {
+    return $this->belongsTo('App\Models\User', 'id_usuario', 'id');
     }
 }
