@@ -27,12 +27,13 @@
 
        <div class="col-md-12">
           <div class="card card-primary">
-      <form method="GET" action="{{route("solicitudes.actualizar.admin",['solicitudes' => $solicitudes->id_contact])}}">
-               @method("PUT")
-                @csrf
+     
             <div class="card-header">
               <h3 class="card-title">Datos de la Solicitud #{{ $solicitudes->id_contact }}</h3>
             </div>
+             <form method="GET" action="{{route("solicitudes.actualizar.admin",['solicitudes' => $solicitudes->id_contact])}}">
+               @method("PUT")
+                @csrf
             <!-- /.box-header -->
             <div class="card-body">
 
@@ -41,7 +42,7 @@
                 @php
 
                 $disabled = '';
-                 if($solicitudes->id_status == 4 || $solicitudes->id_status == 7 || $solicitudes->id_status == 8){
+                 if($solicitudes->id_status == 4 || $solicitudes->id_status == 7 || $solicitudes->id_status == 8 || ($solicitudes->id_usuario_assigned != Auth::id())){
                  $disabled = 'disabled';
                 }
 
@@ -114,13 +115,13 @@
           <!-- /.box -->
         </div>
 
-         @if($solicitudes->id_status == 3 && !$deuda)
+        @if(($solicitudes->id_status == 3 && count($deuda) == 0) && $solicitudes->id_usuario_assigned == Auth::id())
 
         @include('admin.solicitudes.formregistrodeuda')
         
         @endif
 
-        @if($solicitudes->id_status == 3 && $deuda)
+        @if($solicitudes->id_status == 3 && count($deuda) > 0)
 
         @include('admin.solicitudes.deuda')
 

@@ -5,7 +5,7 @@
 Hemos recibido tu Solicitud de Servicio de Internet Inalambrico exitosamente.
 <br>
 <br>
-Para hacer seguimiento a esta solicitud por favor ingresa a nuestro portal web <a href="http://local.vensatel_web.com/">Vensate en Linea</a>, con tus credenciales:
+Para hacer seguimiento a esta solicitud por favor ingresa a nuestro portal web <a href="https://vensatel.com/">Vensate en Linea</a>, con tus credenciales:
 <br>
 <br>
 Usuario: {{$mail->email}}
