@@ -1,4 +1,4 @@
-@extends('layout_adm.admin_template')
+@extends('layout_adm.template')
 
  @section('content-header')
 

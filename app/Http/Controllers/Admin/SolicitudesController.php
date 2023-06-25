@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Suscribe;
@@ -13,6 +14,8 @@ use App\Models\Plan;
 use App\Models\Deuda;
 use App\Models\Message;
 use Carbon\Carbon;
+use App\Mail\StatusChange;
+use Illuminate\Support\Facades\Mail;
 
 
 class SolicitudesController extends Controller
@@ -66,13 +69,22 @@ class SolicitudesController extends Controller
 
         }
 
+        $status = Status::where('id_status',$request->id_status)->first();
+
+        $objDemo = new \stdClass($request->input());
+        $objDemo->name    = $solicitudes->user->name;
+        $objDemo->status   = $status->descripcion;
+
+        Mail::to($solicitudes->user->email)->send(new StatusChange($objDemo));
+
         $solicitudes->id_status   = $request->id_status;
+        $solicitudes->id_usuario_assigned = Auth::user()->id;
         $solicitudes->saveOrFail();
    
         $status = 'success';
         $content = 'Estatus Actualizado exitosamente';
 
-    return redirect()->route("solicitudes.index.admin")->with('process_result',[
+    return back()->with('process_result',[
                 'status' => $status,
                 'content' => $content,
            ]);

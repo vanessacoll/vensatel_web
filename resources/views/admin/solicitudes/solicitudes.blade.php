@@ -34,6 +34,7 @@
                    <table id="example1" class="table table-bordered table-striped">
                    <thead>
                    <tr>
+                       <th>Solicitud</th>
                        <th>Cliente</th>
                        <th>Email</th>
                        <th>Direccion</th>
@@ -45,7 +46,7 @@
                    @foreach($solicitudes as $solicitud)
 
                        <tr>
-
+                           <td>#{{$solicitud->id_contact}}</td>
                            <td>{{$solicitud->name}}</td>
                            <td>{{$solicitud->email}}</td>
                            <td>{{$solicitud->direccion}}</td>
