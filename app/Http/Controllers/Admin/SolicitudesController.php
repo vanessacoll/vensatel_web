@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Suscribe;
@@ -11,7 +12,10 @@ use App\Models\Status;
 use App\Models\Pagos;
 use App\Models\Plan;
 use App\Models\Deuda;
+use App\Models\Message;
 use Carbon\Carbon;
+use App\Mail\StatusChange;
+use Illuminate\Support\Facades\Mail;
 
 
 class SolicitudesController extends Controller
@@ -26,10 +30,12 @@ class SolicitudesController extends Controller
    public function solicitudes_ver(Suscribe $solicitudes)
     {
 
+        $messages = Message::where('id_contact',$solicitudes->id_contact)
+                            ->where('id_usuario_to',$solicitudes->id_usuario)->get();
         $planes = Plan::all();
         $deuda = Deuda::where('id_contact',$solicitudes->id_contact)->get();
     	$statuses = Status::whereIn('id_status',['1','2','3','4','7','8'])->get();
-        return view('admin.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes],compact('statuses','deuda','planes'));
+        return view('admin.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes],compact('statuses','deuda','planes','messages'));
 
     }
 
@@ -63,13 +69,22 @@ class SolicitudesController extends Controller
 
         }
 
+        $status = Status::where('id_status',$request->id_status)->first();
+
+        $objDemo = new \stdClass($request->input());
+        $objDemo->name    = $solicitudes->user->name;
+        $objDemo->status   = $status->descripcion;
+
+        Mail::to($solicitudes->user->email)->send(new StatusChange($objDemo));
+
         $solicitudes->id_status   = $request->id_status;
+        $solicitudes->id_usuario_assigned = Auth::user()->id;
         $solicitudes->saveOrFail();
    
         $status = 'success';
         $content = 'Estatus Actualizado exitosamente';
 
-    return redirect()->route("solicitudes.index.admin")->with('process_result',[
+    return back()->with('process_result',[
                 'status' => $status,
                 'content' => $content,
            ]);

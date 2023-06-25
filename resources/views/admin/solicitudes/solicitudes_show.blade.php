@@ -27,20 +27,22 @@
 
        <div class="col-md-12">
           <div class="card card-primary">
+     
             <div class="card-header">
               <h3 class="card-title">Datos de la Solicitud #{{ $solicitudes->id_contact }}</h3>
             </div>
+             <form method="GET" action="{{route("solicitudes.actualizar.admin",['solicitudes' => $solicitudes->id_contact])}}">
+               @method("PUT")
+                @csrf
             <!-- /.box-header -->
             <div class="card-body">
 
-              <form method="GET" action="{{route("solicitudes.actualizar.admin",['solicitudes' => $solicitudes->id_contact])}}">
-               @method("PUT")
-                @csrf
+           
 
                 @php
 
                 $disabled = '';
-                 if($solicitudes->id_status == 4 || $solicitudes->id_status == 7 || $solicitudes->id_status == 8){
+                 if($solicitudes->id_status == 4 || $solicitudes->id_status == 7 || $solicitudes->id_status == 8 || ($solicitudes->id_usuario_assigned != Auth::id())){
                  $disabled = 'disabled';
                 }
 
@@ -104,31 +106,33 @@
             </div>
 
             <div class="card-footer">
-
-<button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
-<a class="btn btn-default float-right" href="{{ route('solicitudes.index.admin') }}">Cerrar</a>
-</div>
+            <button class="btn btn-primary" {{ $disabled }}>Actualizar</button>
+            <a class="btn btn-default float-right" href="{{ route('solicitudes.index.admin') }}">Cerrar</a>
+            </div>
+    </form>
           </div>
-          </form>
+          
           <!-- /.box -->
         </div>
 
-        @if($solicitudes->id_status == 3 && is_null($deuda))
+        @if(($solicitudes->id_status == 3 && count($deuda) == 0) && $solicitudes->id_usuario_assigned == Auth::id())
 
         @include('admin.solicitudes.formregistrodeuda')
+        
+        @endif
 
-        @elseif($deuda)
+        @if($solicitudes->id_status == 3 && count($deuda) > 0)
 
         @include('admin.solicitudes.deuda')
 
         @endif
 
 
-           <div class="col-md-12">
+        <div class="col-md-12">
+        @include('chat.chat-form') 
+        </div>
 
-            @livewire("chat-form")
 
-            </div>
          </div>
 
 

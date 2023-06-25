@@ -58,6 +58,10 @@
 
 <script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 
+<script src="/adminlte/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<script src="/adminlte/plugins/filterizr/jquery.filterizr.min.js"></script>
+
 
 <script>
     $(function () {
@@ -306,6 +310,33 @@
       conceptoInput.disabled = true;
     }
   });
+</script>
+
+@if(session()->has('process_result'))
+<script>
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 7000
+    });
+  
+     Toast.fire({
+        icon: '{{ session('process_result')['status']}}',
+        title: '{{ session('process_result')['content']}}'
+      })
+    
+  });
+</script>
+@endif
+
+<script>
+  // Obtener el elemento del chat
+  var chatMessages = document.getElementById('chat-messages');
+
+  // Desplazar el scroll hacia abajo
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 </script>
 
 

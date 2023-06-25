@@ -9,6 +9,7 @@ use App\Models\Suscribe;
 use Carbon\Carbon;
 use App\Mail\Suscribe_contact;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Message;
 
 class SolicitudesController extends Controller
 {
@@ -22,8 +23,10 @@ class SolicitudesController extends Controller
 
     public function solicitudesVer(Suscribe $solicitudes)
     {
+        $messages = Message::where('id_contact',$solicitudes->id_contact)
+                            ->where('id_usuario_to',$solicitudes->id_usuario)->get();
 
-        return view('user.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes]);
+        return view('user.solicitudes.solicitudes_show', ['solicitudes' => $solicitudes],compact('messages'));
 
     }
 

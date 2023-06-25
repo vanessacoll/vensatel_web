@@ -1,4 +1,4 @@
-@extends('layout_adm.admin_template')
+@extends('layout_adm.template')
 
  @section('content-header')
 
@@ -84,10 +84,9 @@
 
 
            <div class="col-md-12">
-
-            @livewire("chat-form")
-
-            </div>
+        @include('chat.chat-form') 
+        </div>
+        
          </div>
 
 

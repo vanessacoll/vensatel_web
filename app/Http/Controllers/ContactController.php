@@ -76,7 +76,7 @@ public function Suscribir(Request $request)
     ];
 
     // Enviar correo de suscripción
-    Mail::to('collvanessa041@gmail.com')->send(new Suscribe_contact($objDemo));
+    Mail::to('ventas@vensatel.com')->send(new Suscribe_contact($objDemo));
 
     // Obtener la fecha actual
     $date = now()->locale('es');
