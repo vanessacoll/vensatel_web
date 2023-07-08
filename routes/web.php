@@ -88,7 +88,7 @@ Route::get('admin/reclamos/update/{reclamos}',[App\Http\Controllers\Admin\Reclam
 
 Route::get('admin/pagos',[App\Http\Controllers\Admin\PagosController::class, 'index'])->name('pagos.index.admin');
 
-Route::get('admin/oficina',[App\Http\Controllers\Admin\PagosController::class, 'oficina'])->name('pagos.index.admin');
+Route::get('admin/oficina',[App\Http\Controllers\Admin\PagosController::class, 'oficina'])->name('admin.oficina');
 
 Route::get('download/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'download'])->name('download');
 

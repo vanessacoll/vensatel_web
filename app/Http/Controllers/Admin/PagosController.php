@@ -24,6 +24,10 @@ class PagosController extends Controller
         return response ('', 404);
      }
 
+     public function oficina(){
+
+        return view('admin.oficina');
+     }
 
     public function index()
     {
