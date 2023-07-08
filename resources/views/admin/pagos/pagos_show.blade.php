@@ -75,8 +75,6 @@
 </div>
 
 
-
-
                 </div>
 
                 <div class="col-6">
@@ -114,14 +112,21 @@
 
                 </div>
 
+       
                      
             </div>
 
             <div class="card-footer">
 
-<button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
-<a class="btn btn-default float-right" href="{{ route('pagos.index.admin') }}">Cerrar</a>
-</div>
+               @if (isset($pagos->comprobante))
+              <a class="btn btn-primary" href="{{route("download", ['pagos'=> $pagos->comprobante])}}">
+                  Descargar
+              </a>
+              @endif
+
+              <button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
+              <a class="btn btn-default float-right" href="{{ route('pagos.index.admin') }}">Cerrar</a>
+            </div>
           </div>
           </form> 
           <!-- /.box -->

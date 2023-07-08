@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pagos;
@@ -10,6 +10,21 @@ use App\Models\Status;
 
 class PagosController extends Controller
 {
+    private $disk ="comprobante";
+
+    public function download($pagos)
+    {
+
+        if(Storage::disk($this->disk)->exists($pagos)){
+            return Storage::disk($this->disk)->download($pagos);
+
+
+        }
+
+        return response ('', 404);
+     }
+
+
     public function index()
     {
         $pagos = Pagos::all();
