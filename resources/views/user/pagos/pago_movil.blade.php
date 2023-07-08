@@ -14,13 +14,16 @@
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
 
       @endsection
 
 @section('contenido')
 
-<div class="card card-primary card-outline">
+
+
+{{-- <div class="card card-primary card-outline">
     <div class="card-header">
        <h5 class="card-title m-0"><i class="fas fa-credit-card"></i>BANCO MERCANTIL</h5>
     </div>
@@ -31,12 +34,37 @@
         <br>
         <h6 class="card-title">Beneficiario: Vensatel</h6>
     </div>
-</div>
+</div> --}}
 
 <div class="container-fluid">
 
     <div class="row">
+        
            <div class="col-md-12">
+
+            <div class="callout callout-info p-2 mb-3">
+                <h5><i class="fas fa-credit-card ml-3"></i> Vensatel </h5>
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="card-title">Teléfono: 0424-9147616</h6>
+                            <br>
+                            <h6 class="card-title">Documento: J-41235318-7</h6>
+                            <br>
+                            <h6 class="card-title">Banco Mercantil</h6>
+                        </div>  
+                
+                        <div class="col-6">
+                            <div class="float-right ml-3">
+                                <img class="imgpagos"  src="{{ asset("page_template/img/imagewifi.png") }}" style="width: 100px; height: 100px;" alt="">
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
              <div class="card card-primary card-outline">
                <div class="card-header">
                  <h3 class="card-title">Registrar Pago Movil</h3>
