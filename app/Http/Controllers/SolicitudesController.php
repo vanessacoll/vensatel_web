@@ -32,7 +32,24 @@ class SolicitudesController extends Controller
 
     public function solicitudesCrear(){
 
-        return view('user.solicitudes.solicitudes_create');
+        $solicitudes = Suscribe::where('id_usuario',Auth::user()->id)
+                               ->whereIn('id_status',['1','2','3'])->get();
+
+        if(count($solicitudes)>0){
+
+        $status = 'error';
+        $content = 'Actualmente posee una solicitud en proceso';
+
+        return back()->with('process_result',[
+                'status' => $status,
+                'content' => $content,
+           ]);
+
+        }else{
+
+            return view('user.solicitudes.solicitudes_create');
+
+        }
 
     }
 
