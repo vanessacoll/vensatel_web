@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-              <li class="breadcrumb-item active">pagos</li>
+              <li class="breadcrumb-item active">Pagos</li>
             </ol>
           </div>
         </div>
@@ -43,10 +43,7 @@
                  <thead>
                  <tr>
                      <th>Concepto</th>
-                     <th>Concepto Extra</th>
                      <th>Fecha</th>
-                     <th>Monto</th>
-                     <th>Monto Extra</th>
                      <th>Total</th>
                   </tr>
                  </thead>
@@ -54,11 +51,8 @@
                     @foreach($deuda as $saldo)
                      <tr>
 
-                         <td>{{$saldo->id_concepto}}</td>
-                         <td>{{$saldo->concepto_extra}}</td>
+                         <td>{{$saldo->concepto->descripcion}} - {{$saldo->concepto_extra}}</td>
                          <td>{{$saldo->fecha}}</td>
-                         <td>{{$saldo->monto}}</td>
-                         <td>{{$saldo->monto_extra}}</td>
                          <td>{{$saldo->monto + $saldo->monto_extra}}</td>
 
                      </tr>

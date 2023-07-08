@@ -84,7 +84,7 @@
     </a>
     </li>
     <li class="nav-item">
-    <a href="{{ route('pagos.pago_en_oficina') }}" class="nav-link {{ request()->is('*pagooficina*') ? 'active' : '' }}" onclick="openModal()">
+    <a href="{{ route('pagos.pago_en_oficina') }}" class="nav-link {{ request()->is('*pagooficina*') ? 'active' : '' }}">
     <i class="far fa-circle nav-icon"></i>
     <p>Pago en Oficina</p>
     </a>
@@ -92,6 +92,15 @@
 
 </ul> --}}
           </li>
+
+   <li class="nav-item">
+      <a href="#" class="nav-link {{ request()->is('*vender*') ? 'active' : '' }}">
+        <i class="nav-icon far fa-credit-card"></i>
+          <p>
+          Historial de Pagos
+          </p>
+      </a>
+  </li>       
 
 @endcan
 

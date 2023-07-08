@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Solicitudes de Servicio</h1>
+            <h1>Pagos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin/home">Admin Dashboard</a></li>
-              <li class="breadcrumb-item active">Solicitudes de Servicio</li>
+              <li class="breadcrumb-item active">Pagos</li>
             </ol>
           </div>
         </div>
@@ -106,7 +106,12 @@
                 <p class=" shadow-none">
                 <strong>Comprobante de Pago:</strong> {{ $pagos->oficinas->descripcion }}
                 @endif
-
+                
+                @if (isset($pagos->comprobante))
+              <a class="btn btn-primary" href="{{route("download", ['pagos'=> $pagos->comprobante])}}">
+                  Descargar
+              </a>
+              @endif
 
                 </div>
 
@@ -118,13 +123,7 @@
 
             <div class="card-footer">
 
-               @if (isset($pagos->comprobante))
-              <a class="btn btn-primary" href="{{route("download", ['pagos'=> $pagos->comprobante])}}">
-                  Descargar
-              </a>
-              @endif
-
-              <button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
+               <button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
               <a class="btn btn-default float-right" href="{{ route('pagos.index.admin') }}">Cerrar</a>
             </div>
           </div>
