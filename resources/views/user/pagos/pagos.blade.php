@@ -14,7 +14,8 @@
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
    
  @endsection
 
@@ -24,14 +25,19 @@
 
   <div class="row">
          <div class="col-md-12">
-           <div class="card card-primary card-outline"> 
+           <div class="card card-primary"> 
              <div class="card-header">
                <h3 class="card-title">Consulta de Deudas</h3>
              </div>
+
+             @include('user.pagos.pagos_modal')
+      
              <!-- /.box-header -->
+             <!-- Button trigger modal -->
              <div class="card-body">
-              <a href="" class="btn btn-primary float-right mb-2 ml-2 " >
-                <span class="nav-icon fas fas fa-cash-register">  Notificar Pago</span>
+              <a href="" class="btn btn-primary float-right mb-2 ml-2 " data-toggle="modal" data-target="#exampleModalCenter">
+                <i class="nav-icon fas fas fa-cash-register"></i>
+                Notificar Pago
               </a>
                  <table id="example1" class="table table-bordered table-striped">
                  <thead>
@@ -53,6 +59,7 @@
                          <td>{{$saldo->fecha}}</td>
                          <td>{{$saldo->monto}}</td>
                          <td>{{$saldo->monto_extra}}</td>
+                         <td>{{$saldo->monto + $saldo->monto_extra}}</td>
 
                      </tr>
                     @endforeach   
