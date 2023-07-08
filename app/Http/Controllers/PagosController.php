@@ -21,6 +21,19 @@ class PagosController extends Controller
 {
     private $disk ="comprobante";
 
+    //     public function download($pagos)
+    // {
+
+    //     if(Storage::disk($this->disk)->exists($pagos)){
+    //         return Storage::disk($this->disk)->download($pagos);
+
+
+    //     }
+
+    //     return response ('', 404);
+    //  }
+
+
     public function pagos(){
         
         $deuda = Deuda::where('id_usuario',Auth::user()->id)->get();

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagosController;
+// use App\Http\Controllers\Admin\PagosController;
 use App\Http\Controllers\SolicitudesController;
 
 /*
@@ -86,6 +87,10 @@ Route::get('admin/reclamos/update/{reclamos}',[App\Http\Controllers\Admin\Reclam
 //Pagos
 
 Route::get('admin/pagos',[App\Http\Controllers\Admin\PagosController::class, 'index'])->name('pagos.index.admin');
+
+Route::get('admin/oficina',[App\Http\Controllers\Admin\PagosController::class, 'oficina'])->name('pagos.index.admin');
+
+Route::get('download/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'download'])->name('download');
 
 Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
 
