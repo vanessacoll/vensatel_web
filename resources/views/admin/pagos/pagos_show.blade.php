@@ -106,7 +106,12 @@
                 <p class=" shadow-none">
                 <strong>Comprobante de Pago:</strong> {{ $pagos->oficinas->descripcion }}
                 @endif
-
+                
+                @if (isset($pagos->comprobante))
+              <a class="btn btn-primary" href="{{route("download", ['pagos'=> $pagos->comprobante])}}">
+                  Descargar
+              </a>
+              @endif
 
                 </div>
 
@@ -118,13 +123,7 @@
 
             <div class="card-footer">
 
-               @if (isset($pagos->comprobante))
-              <a class="btn btn-primary" href="{{route("download", ['pagos'=> $pagos->comprobante])}}">
-                  Descargar
-              </a>
-              @endif
-
-              <button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
+               <button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
               <a class="btn btn-default float-right" href="{{ route('pagos.index.admin') }}">Cerrar</a>
             </div>
           </div>

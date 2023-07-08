@@ -9,8 +9,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-              <li class="breadcrumb-item active">Pagos</li>
+              <li class="breadcrumb-item"><a href="/pagos">Pagos</a></li>
+              <li class="breadcrumb-item active">Pago Movil</li>
             </ol>
           </div>
         </div>
@@ -21,29 +21,14 @@
 
 @section('contenido')
 
-
-
-{{-- <div class="card card-primary card-outline">
-    <div class="card-header">
-       <h5 class="card-title m-0"><i class="fas fa-credit-card"></i>BANCO MERCANTIL</h5>
-    </div>
-    <div class="card-body">
-        <h6 class="card-title">Telefono: 0424-9147616</h6>
-        <br>
-        <h6 class="card-title">Documento: J-41235318-7</h6>
-        <br>
-        <h6 class="card-title">Beneficiario: Vensatel</h6>
-    </div>
-</div> --}}
-
 <div class="container-fluid">
 
     <div class="row">
         
            <div class="col-md-12">
 
-            <div class="callout callout-info p-2 mb-3">
-                <h5><i class="fas fa-credit-card ml-3"></i> Vensatel </h5>
+            <div class="callout callout-primary p-2 mb-3">
+                <h5><i class="fas fa-credit-card ml-3 mt-3"></i> Vensatel </h5>
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-6">
@@ -53,19 +38,12 @@
                             <br>
                             <h6 class="card-title">Banco Mercantil</h6>
                         </div>  
-                
-                        <div class="col-6">
-                            <div class="float-right ml-3">
-                                <img class="imgpagos"  src="{{ asset("page_template/img/imagewifi.png") }}" style="width: 100px; height: 100px;" alt="">
-
-                            </div> 
-                        </div>
                     </div>
                 </div>
                 
             </div>
 
-             <div class="card card-primary card-outline">
+             <div class="card card-primary">
                <div class="card-header">
                  <h3 class="card-title">Registrar Pago Movil</h3>
                </div>

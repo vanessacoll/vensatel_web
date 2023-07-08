@@ -38,5 +38,10 @@ class Deuda extends Model
     public function plan()
     {
     return $this->belongsTo('App\Models\Plan', 'id_plan', 'id_plan');
-    }    
+    }  
+
+    public function concepto()
+    {
+    return $this->belongsTo('App\Models\ConceptoPago', 'id_concepto', 'id_concepto');
+    }  
 }

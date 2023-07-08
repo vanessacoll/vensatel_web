@@ -54,9 +54,9 @@
                         <td>
 
 
-                               <a class="btn btn-primary" href="{{route("register.destroy",['user' => $user->id])}}">
+                              {{-- <a class="btn btn-primary" href="{{route("register.destroy",['user' => $user->id])}}">
                                    <i class="fa fa-trash"></i>
-                               </a>
+                               </a> --}}
 
                                <a class="btn btn-primary" href="{{route("register.edit",['user' => $user->id])}}">
                                    <i class="fa fa-edit"></i>
