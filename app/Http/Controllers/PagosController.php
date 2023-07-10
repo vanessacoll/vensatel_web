@@ -41,9 +41,6 @@ class PagosController extends Controller
         return view('user.pagos.pagos',compact('deuda'));
     }
 
-    // public function dueda(){
-
-    // }
 
     public function oficina(){
 
@@ -56,17 +53,92 @@ class PagosController extends Controller
     public function CitaOficina(Request $request)
     {
 
-        $flight = new Pagos;
-        $flight->id_usuario = Auth::user()->id ;
-        $flight->id_oficina = $request->id_oficina;
-        $flight->fecha = $request->fecha; 
-        $flight->hora = $request->hora;
-        $flight->id_concepto = $request->id_concepto;
-        $flight->id_contact = $request->id_contact;
-        $flight->id_status = '1'; 
-        $flight->save();
-       
-        return redirect()->route('pagos.pago_en_oficina');
+       $pagos = "";
+        if($request->id_contact != ""){
+            $pagos = Pagos::where('id_contact',$request->id_contact)->get();
+        }
+
+        $cita = Pagos::where('id_metodo','4')
+                      ->where('id_usuario',Auth::user()->id)
+                      ->where('id_status','5')->get();
+
+        if(count($cita)>0){
+
+          $status = 'error';
+                    $content = 'El usuario ya posee una cita pendiente por realizar';
+
+                         return redirect()->route("pagos.pago_en_oficina")->with('process_result',[
+                            'status' => $status,
+                            'content' => $content,
+                       ]);
+
+        }
+
+        $citas = Pagos::where('id_metodo','4')
+                      ->where('id_status','5')
+                      ->where('fecha',$request->fecha)->get();
+
+        if(count($citas)>5){
+
+          $status = 'error';
+                    $content = 'Lo sentimos, el dia '.$request->fecha.' ya no se encuentra disponible para agendar mas citas';
+
+                         return redirect()->route("pagos.pago_en_oficina")->with('process_result',[
+                            'status' => $status,
+                            'content' => $content,
+                       ]);
+
+        }
+
+        if($request->id_contact != ""){
+
+                $solicitud = Suscribe::where('id_contact',$request->id_contact)->exists();
+
+                if($solicitud && !$pagos){
+
+                $flight = new Pagos;
+                $flight->id_usuario = Auth::user()->id ;
+                $flight->id_oficina = $request->id_oficina;
+                $flight->fecha = $request->fecha; 
+                $flight->hora = $request->hora;
+                $flight->id_concepto = $request->id_concepto;
+                $flight->id_contact = $request->id_contact;
+                $flight->id_status = '1'; 
+                $flight->id_metodo = '4'; 
+                $flight->save();
+
+                }else{
+
+                    $status = 'error';
+                    $content = 'No existe solicitud ingresada con ese numero o ya tiene un pago asociado';
+
+                         return redirect()->route("pagos.pago_en_oficina")->with('process_result',[
+                            'status' => $status,
+                            'content' => $content,
+                       ]);
+
+                }
+            }else{
+
+                $flight = new Pagos;
+                $flight->id_usuario = Auth::user()->id ;
+                $flight->id_oficina = $request->id_oficina;
+                $flight->fecha = $request->fecha; 
+                $flight->hora = $request->hora;
+                $flight->id_concepto = $request->id_concepto;
+                $flight->id_status = '1'; 
+                $flight->id_metodo = '4'; 
+                $flight->save();
+
+            }
+
+      $status = 'success';
+      $content = 'Pago registrado exitosamente';
+
+      return redirect()->route("pagos.pago_en_oficina")->with('process_result',[
+                            'status' => $status,
+                            'content' => $content,
+                       ]);
 
     }
 
@@ -86,49 +158,92 @@ class PagosController extends Controller
         return view('user.pagos.pago_movil',compact('conceptoPagos'));
     }
 
-    // public function transferencia(Request $request){
-        
-    //   $pago = $request->validator(
-    //     [
-
-    //       'id_pago',
-    //       'id_usuario',
-    //       'id_metodo',
-    //       'comprobante',
-    //       'referencia',
-    //       'fecha',
-    //       'id_contact',
-    //       'telefono',
-    //       'id_status',
-    //       'monto',
-    //       'id_concepto',
-    //       'hora',
-    //       'id_oficina',
-    //     ]
-    //     );
-    // }
 
     public function transferencia(Request $request)
     {
 
-        $date = Carbon::now();
-        $file = $request->file;
-        $name = Auth::user()->id.$date.$file->getClientOriginalName(); 
-        $file->storeAs('',$name,$this->disk);  
+      $pagos = "";
+        if($request->id_contact != ""){
+            $pagos = Pagos::where('id_contact',$request->id_contact)->get();
+        }
 
-        $flight = new Pagos;
-        $flight->id_usuario = Auth::user()->id ;
-        $flight->id_metodo = $request->id_metodo;
-        $flight->fecha = $request->fecha; 
-        $flight->referencia = $request->referencia;
-        $flight->monto = $request->monto;
-        $flight->comprobante = $name;
-        $flight->id_concepto = $request->id_concepto;
-        $flight->id_contact = $request->id_contact;
-        $flight->id_status = '5'; 
-        $flight->save();
-       
-        return redirect()->route('pagos.transferencias');
+        $transferencia = Pagos::whereIn('id_metodo',['2','3'])
+                      ->where('referencia',$request->referencia)->get();
+
+        if(count($transferencia)>0){
+
+          $status = 'error';
+          $content = 'Lo sentimos, un pago ya se encuentra registrado por ese serial';
+
+          return redirect()->route("pagos.transferencias")->with('process_result',[
+                            'status' => $status,
+                            'content' => $content,
+                       ]);
+
+        }
+
+         if($request->id_contact != ""){
+
+                $solicitud = Suscribe::where('id_contact',$request->id_contact)->exists();
+
+                if($solicitud && !$pagos){
+
+
+                $date = Carbon::now();
+                $file = $request->file;
+                $name = Auth::user()->id.$date.$file->getClientOriginalName(); 
+                $file->storeAs('',$name,$this->disk);  
+
+                $flight = new Pagos;
+                $flight->id_usuario = Auth::user()->id ;
+                $flight->id_metodo = $request->id_metodo;
+                $flight->fecha = $request->fecha; 
+                $flight->referencia = $request->referencia;
+                $flight->monto = $request->monto;
+                $flight->comprobante = $name;
+                $flight->id_concepto = $request->id_concepto;
+                $flight->id_contact = $request->id_contact;
+                $flight->id_status = '5'; 
+                $flight->save();
+
+                }else{
+
+                    $status = 'error';
+                    $content = 'No existe solicitud ingresada con ese numero o ya tiene un pago asociado';
+
+                         return redirect()->route("pagos.transferencias")->with('process_result',[
+                            'status' => $status,
+                            'content' => $content,
+                       ]);
+
+                }
+            }else{
+
+                $date = Carbon::now();
+                $file = $request->file;
+                $name = Auth::user()->id.$date.$file->getClientOriginalName(); 
+                $file->storeAs('',$name,$this->disk);  
+
+                $flight = new Pagos;
+                $flight->id_usuario = Auth::user()->id ;
+                $flight->id_metodo = $request->id_metodo;
+                $flight->fecha = $request->fecha; 
+                $flight->referencia = $request->referencia;
+                $flight->monto = $request->monto;
+                $flight->comprobante = $name;
+                $flight->id_concepto = $request->id_concepto;
+                $flight->id_status = '5'; 
+                $flight->save();
+
+            }
+
+      $status = 'success';
+      $content = 'Pago registrado exitosamente';
+
+      return redirect()->route("pagos.transferencias")->with('process_result',[
+                            'status' => $status,
+                            'content' => $content,
+                       ]);
 
     }
 
@@ -162,7 +277,7 @@ class PagosController extends Controller
         $desencrypt = AesCipher::encrypt($keyhash,$des);
 
 
-      /*  $curl = curl_init();
+        $curl = curl_init();
 
       curl_setopt_array($curl, [
           CURLOPT_URL =>"https://apimbu.mercantilbanco.com/mercantil-banco/sandbox/v1/mobile-payment/search",
@@ -221,7 +336,7 @@ class PagosController extends Controller
                 'content' => $content,
            ]);
 
-            }else{*/
+            }else{
 
             if($request->solicitud != ""){
 
@@ -274,7 +389,7 @@ class PagosController extends Controller
                             'status' => $status,
                             'content' => $content,
                        ]);
-               /*     }
+                   }
 
          }elseif($error){
 
@@ -290,7 +405,18 @@ class PagosController extends Controller
                 'content' => $content,
            ]);
 
-         }*/
+         }
+    }
+
+
+    public function VerPagos(){
+
+
+    }
+
+    public function VerPagosShow(){
+
+      
     }
 
 }
