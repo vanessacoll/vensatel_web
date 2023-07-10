@@ -82,7 +82,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="monto">Monto</label>
-            <input type="text" name="monto" class="form-control" id="monto" placeholder="Ingrese monto">
+            <input type="text" name="monto" class="form-control" id="monto" oninput="validarMonto(this)" value="0.00" placeholder="Ingrese monto">
         </div>
     </div>
 </div>
