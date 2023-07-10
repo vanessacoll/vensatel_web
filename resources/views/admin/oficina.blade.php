@@ -33,7 +33,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form  action="" method=""   enctype="multipart/form-data" >
+            <form  action="{{ route('admin.oficina.crear') }}" method="POST"   enctype="multipart/form-data" >
 
               @csrf
               <div class="card-body">
@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <div id="">
                                 <label for="solicitud">Descripcion</label>
-                                <input type="text" name="" class="form-control" placeholder="Descripcion de oficina">
+                                <input type="text" name="descripcion" class="form-control" placeholder="Descripcion de oficina">
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <div id="">
                                 <label for="solicitud">Ubicacion</label>
-                                <input type="text" name="" class="form-control" placeholder="Ubicacion de oficina">
+                                <input type="text" name="ubicacion" class="form-control" placeholder="Ubicacion de oficina">
                             </div>
                         </div>
                     </div>

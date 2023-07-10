@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Models\Oficinas;
 use Illuminate\Http\Request;
 use App\Models\Pagos;
 use App\Models\User;
@@ -27,6 +28,18 @@ class PagosController extends Controller
      public function oficina(){
 
         return view('admin.oficina');
+     }
+
+
+     public function oficrear(Request $request)
+     {
+         $command = new Oficinas;
+         $command->descripcion = $request->descripcion; 
+         $command->ubicacion = $request->ubicacion;
+         $command->save();
+        
+         return redirect()->route('admin.oficina');
+ 
      }
 
     public function index()
