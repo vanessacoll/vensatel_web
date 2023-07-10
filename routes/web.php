@@ -90,6 +90,8 @@ Route::get('admin/pagos',[App\Http\Controllers\Admin\PagosController::class, 'in
 
 Route::get('admin/oficina',[App\Http\Controllers\Admin\PagosController::class, 'oficina'])->name('admin.oficina');
 
+Route::post('admin/oficina/crear',[App\Http\Controllers\Admin\PagosController::class, 'oficrear'])->name('admin.oficina.crear');
+
 Route::get('download/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'download'])->name('download');
 
 Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
