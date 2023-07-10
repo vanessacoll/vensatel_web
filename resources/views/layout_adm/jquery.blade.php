@@ -339,4 +339,18 @@
   chatMessages.scrollTop = chatMessages.scrollHeight;
 </script>
 
+<script>
+function validarMonto(input) {
+  // Eliminar cualquier carácter que no sea un número o un punto decimal
+  input.value = input.value.replace(/[^0-9.]/g, '');
+
+  // Asegurarse de que solo haya un punto decimal
+  if (input.value.split('.').length > 2) {
+    input.value = input.value.replace(/\.+$/g, '');
+  }
+}
+</script>
+
+
+
 
