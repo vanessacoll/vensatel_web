@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin/home">Admin Dashboard</a></li>
-              <li class="breadcrumb-item active">Agregar Oficinas</li>
+              <li class="breadcrumb-item active">Editar Oficinas</li>
             </ol>
           </div>
         </div>
@@ -29,11 +29,11 @@
           <!-- jquery validation -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Registro de Oficinas<small>.</small></h3>
+              <h3 class="card-title">Editar Oficinas<small>.</small></h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form  action="{{ route('admin.oficina.crear') }}" method="POST"   enctype="multipart/form-data" >
+            <form  action="{{ route('admin.oficina.ofiactualizar',['datos' => $datos->id_oficina]) }}" method="POST"   enctype="multipart/form-data" >
 
               @csrf
               <div class="card-body">
@@ -44,16 +44,16 @@
                         <div class="form-group">
                             <div id="">
                                 <label for="solicitud">Descripcion</label>
-                                <input type="text" name="descripcion" class="form-control" placeholder="Descripcion de oficina">
+                                <input type="text" value="{{$datos->descripcion}}" name="descripcion" class="form-control" placeholder="Descripcion de oficina">
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6">  
                         <div class="form-group">
                             <div id="">
                                 <label for="solicitud">Ubicacion</label>
-                                <input type="text" name="ubicacion" class="form-control" placeholder="Ubicacion de oficina">
+                                <input type="text" value="{{$datos->ubicacion}}" name="ubicacion" class="form-control" placeholder="Ubicacion de oficina">
                             </div>
                         </div>
                     </div>
@@ -66,6 +66,7 @@
               </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
+                  <a class="btn btn-default float-right" href="{{route("admin.home")}}">Cerrar</a>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               

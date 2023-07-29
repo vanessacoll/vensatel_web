@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tasa extends Model
 {
+    protected $table = 'tasa_cambiaria';
+
     use HasFactory;
+
+    public $timestamps = false;
+
+    public $incrementing = false;
 }

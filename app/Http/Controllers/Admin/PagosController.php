@@ -8,10 +8,23 @@ use Illuminate\Http\Request;
 use App\Models\Pagos;
 use App\Models\User;
 use App\Models\Status;
+use App\Models\Tasa;
+
 
 class PagosController extends Controller
 {
     private $disk ="comprobante";
+
+    public function cambdolar(Request $request){
+
+        $dolar = new Tasa;
+        $dolar->precio = $request->precio; 
+        $dolar->fecha = $request->fecha;
+        $dolar->save();
+
+        return redirect()->route('admin.home');
+
+    }
 
     public function download($pagos)
     {
@@ -23,11 +36,25 @@ class PagosController extends Controller
         }
 
         return response ('', 404);
+     }    
+
+     public function ofieditar(Oficinas $datos)
+     {
+
+         return view('admin.oficina.ofieditar', ['datos' => $datos]);
+     }
+
+
+
+     public function ofiver(){
+        $oficinas = Oficinas::all();
+
+        return view('admin.oficina.ofiver', compact('oficinas'));
      }
 
      public function oficina(){
 
-        return view('admin.oficina');
+        return view('admin.oficina.oficina');
      }
 
 
@@ -38,7 +65,18 @@ class PagosController extends Controller
          $command->ubicacion = $request->ubicacion;
          $command->save();
         
-         return redirect()->route('admin.oficina');
+         return redirect()->route('admin.oficina.oficina');
+     }
+
+
+     public function ofiactualizar(Request $request, Oficinas $datos)
+     {
+        
+        $datos->descripcion = $request->descripcion; 
+        $datos->ubicacion = $request->ubicacion;
+        $datos->saveOrFail();
+         
+         return redirect()->route('admin.oficina.ofiver');
  
      }
 
@@ -72,4 +110,12 @@ class PagosController extends Controller
            ]);
 
     }
+
+    public function destroy(Oficinas $datos)
+    {
+        $datos-> delete();
+
+        return redirect()->route('admin.oficina.ofiver');
+    }
+
 }

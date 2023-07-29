@@ -9,16 +9,24 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">Tasa 1 USD = 28,28 Bs.</li>
+              <a class="btn btn-primary"  data-toggle="modal" data-target="#staticBackdrop" >
+                <i class='fas fa-comment-dollar'></i>
+            </a>
               <li class="breadcrumb-item active">Admin Dashboard</li>
             </ol>
+
+            @include('user.pagos.pagos_modal')
+
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
+    <!-- /.container-fluid -->
 
  @endsection
 
 @section('contenido')
+
+
 
 <div class="container-fluid">
 

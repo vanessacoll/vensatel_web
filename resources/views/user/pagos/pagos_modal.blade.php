@@ -1,4 +1,4 @@
-<!-- Modal -->
+<!----- Modal de notificar pagos ----->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -37,6 +37,55 @@
     </div>
   </div>
 </div>  
+
+   <!----- Modal de tasa cambiaria ----->
+   <div class="modal fade" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <img class="img-profile"src="{{asset("page_template/img/bolsa-de-dinero.gif")}}"style="width: 35px; height: 35px;">
+              <h5 class="modal-title" id="exampleModalLabel">Precio dolar</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"></span>
+              </button>
+          </div>
+
+          <form action="{{ route('home.dolar') }}" method="GET" >
+              @csrf
+              <div class="modal-body">
+                 
+
+                  <div class="row g-3">
+                    <div class="col">
+                        <label>Fecha</label>
+                        <input type="date" name="fecha" id="" class="form-control" placeholder="fecha" aria-label="First name">
+                    </div>
+                    <div class="col">
+                        <label>Dolar</label>
+                        <input type="text" name="precio" id="" class="form-control" aria-label="Last name" oninput="validarMonto(this)" value="0.00" placeholder="Ingrese monto">
+                    </div>
+                </div>
+                
+              </div>
+              
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                   
+                      Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    
+                      Cambiar
+                  </button>
+              </div>
+          </form>
+
+      </div>
+  </div>
+</div>
+
+
+
 <style>
 
   
