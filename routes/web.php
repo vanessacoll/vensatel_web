@@ -88,9 +88,22 @@ Route::get('admin/reclamos/update/{reclamos}',[App\Http\Controllers\Admin\Reclam
 
 Route::get('admin/pagos',[App\Http\Controllers\Admin\PagosController::class, 'index'])->name('pagos.index.admin');
 
-Route::get('admin/oficina',[App\Http\Controllers\Admin\PagosController::class, 'oficina'])->name('admin.oficina');
+Route::get('admin/oficina/ver',[App\Http\Controllers\Admin\PagosController::class, 'ofiver'])->name('admin.oficina.ofiver');
 
-Route::post('admin/oficina/crear',[App\Http\Controllers\Admin\PagosController::class, 'oficrear'])->name('admin.oficina.crear');
+Route::get('admin/oficina/editar{datos}',[App\Http\Controllers\Admin\PagosController::class, 'ofieditar'])->name('admin.oficina.ofieditar');
+
+Route::post('admin/oficina/actualizar{datos}',[App\Http\Controllers\Admin\PagosController::class, 'ofiactualizar'])->name('admin.oficina.ofiactualizar');
+
+Route::delete('admin/oficina/eliminar{datos}',[App\Http\Controllers\Admin\PagosController::class, 'destroy'])->name('admin.oficina.destroy');
+
+
+
+Route::get('guardar/tasa/dolar',[App\Http\Controllers\Admin\PagosController::class, 'cambdolar'])->name('home.dolar');
+
+
+Route::get('admin/oficina',[App\Http\Controllers\Admin\PagosController::class, 'oficina'])->name('admin.oficina.oficina');
+
+Route::post('admin/oficina/crear',[App\Http\Controllers\Admin\PagosController::class, 'oficrear'])->name('admin.oficina.oficina.crear');
 
 Route::get('download/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'download'])->name('download');
 
