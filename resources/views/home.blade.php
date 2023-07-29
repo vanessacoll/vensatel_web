@@ -9,7 +9,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">Tasa 1 USD = 28,28 Bs.</li>
+              <li class="breadcrumb-item">Tasa 1 USD = {{ $tasa->precio }} Bs.</li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div>

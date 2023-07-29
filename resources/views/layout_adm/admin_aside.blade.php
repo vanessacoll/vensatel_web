@@ -78,7 +78,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('admin.oficina') }}" class="nav-link  {{ request()->is('*reclamos*') ? 'active' : '' }}">
+            <a href="{{ route('admin.oficina.ofiver') }}" class="nav-link  {{ request()->is('*reclamos*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                Oficinas
