@@ -56,6 +56,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{ route('admin.cliente.cliente') }}"  class="nav-link {{ request()->is('*clientes*') ? 'active' : '' }}"> 
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+               Clientes
+              </p>
+            </a>
+          </li>
+
 
           <li class="nav-item">
             <a href="{{ route('pagos.index.admin') }}" class="nav-link  {{ request()->is('*pagos*') ? 'active' : '' }}">
@@ -94,6 +103,8 @@
               </p>
             </a>
           </li>
+
+          
 
 
 

@@ -55,16 +55,17 @@
               <div class="modal-body">
                  
 
-                  <div class="row g-3">
-                    <div class="col">
-                        <label>Fecha</label>
-                        <input type="date" name="fecha" id="" class="form-control" placeholder="fecha" aria-label="First name">
-                    </div>
-                    <div class="col">
-                        <label>Dolar</label>
-                        <input type="text" name="precio" id="" class="form-control" aria-label="Last name" oninput="validarMonto(this)" value="0.00" placeholder="Ingrese monto">
-                    </div>
+                <div class="row g-3">
+                  <div class="col">
+                    <label>Fecha y Hora</label>
+                    <input type="datetime-local" name="fecha" id="" class="form-control" placeholder="Fecha y hora" aria-label="First name">
+                  </div>
+                  <div class="col">
+                    <label>Dolar</label>
+                    <input type="text" name="precio" id="" class="form-control" aria-label="Last name" oninput="validarMonto(this)" value="0.00" placeholder="Ingrese monto">
+                  </div>
                 </div>
+                
                 
               </div>
               
