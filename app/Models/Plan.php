@@ -17,9 +17,9 @@ class Plan extends Model
 
      protected $fillable = [
         'id_plan',
-        'descripcion', 
-        'precio',
-        
+        'nombre', 
+        'id_plan_wisphub',
+        'tipo',
     ];
 
 }
