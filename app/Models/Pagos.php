@@ -28,6 +28,7 @@ class Pagos extends Model
         'id_concepto',
         'hora',
         'id_oficina',
+        'asociado',
 
     ];
 
