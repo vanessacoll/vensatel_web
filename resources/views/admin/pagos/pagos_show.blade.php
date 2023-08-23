@@ -123,8 +123,51 @@
 
             <div class="card-footer">
 
-               <button class="btn  btn-primary" {{ $disabled }}>Actualizar</button>
+               @if ($pagos->id_status == 6 && !empty($deudas) $$ $pagos->asociado == 'N')
+                  <button class="btn btn-primary" {{ $disabled }}>Actualizar</button>
+                  <a href="#" class="btn btn-primary" onclick="toggleForm()">Rebajar Deuda</a>
+              @else
+                  <button class="btn btn-primary" {{ $disabled }}>Actualizar</button>
+              @endif
               <a class="btn btn-default float-right" href="{{ route('pagos.index.admin') }}">Cerrar</a>
+            </div>
+          </div>
+          </form> 
+          <!-- /.box -->
+        </div>
+
+
+        <div class="col-md-12" id="rebajarForm" style="display: none;">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Rebajar Deuda</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="card-body">
+
+              <form method="GET" action="{{route("rebajar.deuda.admin",['pagos' => $pagos->id_pago])}}">
+               @method("PUT")
+                @csrf
+
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Deudas Registradas</label>
+                  <div class="col-sm-12">
+                      <select required name="id_deuda" class="form-control" style="width: 100%;">
+                          <option value="">Seleccione</option>
+                          @foreach($deudas as $deuda)
+                                  <option value="{{$deuda->id_deuda}}">{{$deuda->concepto->descripcion}} {{$deuda->monto}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+              </div>
+                     
+            </div>
+
+            <div class="card-footer">
+              <button class="btn btn-primary">Rebajar Deuda</button>
+
+              <a class="btn btn-default float-right" href="{{ route('pagos.index.admin') }}">Cerrar</a>
+
             </div>
           </div>
           </form> 

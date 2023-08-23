@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagosController;
  use App\Http\Controllers\Admin\PlansController;
 use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\Admin\ZoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,16 @@ Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'ind
 })->name('admin.home')->middleware('isAdmin');
 
 //API
+//planes
+    Route::get('/fetch-plan', [PlansController::class, 'getPlans'])->name('plan');
 
-Route::get('/fetch-plan', [PlansController::class, 'getPlans']);
+Route::get('/planes', [PlansController::class, 'getPlansIndex'])->name('admin.planes.plans');
+
+Route::get('/fetch-zonas', [ZoneController::class, 'getZone'])->name('zonas');
+
+
+
+
 
 
 //Solicitudes
@@ -117,6 +126,9 @@ Route::get('download/{pagos}',[App\Http\Controllers\Admin\PagosController::class
 Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'actualizar_pagos'])->name('pagos.actualizar.admin');
 
 Route::get('admin/pagos/ver/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
+
+
+Route::get('admin/deudas/rebajar/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'rebajarDeuda'])->name('rebajar.deuda.admin');
 
 
 //Usuarios
