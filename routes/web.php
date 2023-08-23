@@ -112,6 +112,9 @@ Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosControl
 Route::get('admin/pagos/ver/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
 
 
+Route::get('admin/deudas/rebajar/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'rebajarDeuda'])->name('rebajar.deuda.admin');
+
+
 //Usuarios
 
 

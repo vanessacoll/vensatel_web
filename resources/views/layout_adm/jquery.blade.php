@@ -351,6 +351,14 @@ function validarMonto(input) {
 }
 </script>
 
+<script>
+  function toggleForm() {
+    var form = document.getElementById('rebajarForm');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
+
 
 
 
