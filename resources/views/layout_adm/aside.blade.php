@@ -94,7 +94,7 @@
           </li>
 
    <li class="nav-item">
-      <a href="#" class="nav-link {{ request()->is('*vender*') ? 'active' : '' }}">
+      <a href="{{ route('historial.historial_show') }}" class="nav-link {{ request()->is('*vender*') ? 'active' : '' }}">
         <i class="nav-icon far fa-credit-card"></i>
           <p>
           Historial de Pagos

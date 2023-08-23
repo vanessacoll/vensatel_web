@@ -58,6 +58,25 @@
 
 
           <li class="nav-item">
+            <a href="{{ route('admin.planes.plans') }}" class="nav-link {{ request()->is('*planes*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+                Planes
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('admin.cliente.cliente') }}"  class="nav-link {{ request()->is('*clientes*') ? 'active' : '' }}"> 
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+               Clientes
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
             <a href="{{ route('pagos.index.admin') }}" class="nav-link  {{ request()->is('*pagos*') ? 'active' : '' }}">
               <i class="nav-icon fas fas fa-cash-register"></i>
               <p>
@@ -94,6 +113,8 @@
               </p>
             </a>
           </li>
+
+          
 
 
 

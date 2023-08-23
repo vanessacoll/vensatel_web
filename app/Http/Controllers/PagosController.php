@@ -8,6 +8,7 @@ use App\Models\Pago;
 use App\Models\MetodoPago;
 use App\Models\oficinas;
 use App\Models\Pagos;
+use App\Models\User;
 use App\Models\Deuda;
 use App\Models\Suscribe;
 use App\Api\AesCipher;
@@ -20,19 +21,22 @@ error_reporting(E_ALL);
 class PagosController extends Controller
 {
     private $disk ="comprobante";
+    
 
-    //     public function download($pagos)
-    // {
+    public function clientes(){
+        $clientes = User::where('isAdmin', 0)->get();
 
-    //     if(Storage::disk($this->disk)->exists($pagos)){
-    //         return Storage::disk($this->disk)->download($pagos);
+        return view('admin.cliente.cliente', compact('clientes'));
+    }
+    
+
+    public function historial() {
+
+        $deuda = Pagos::where('id_usuario',Auth::user()->id)->get();
 
 
-    //     }
-
-    //     return response ('', 404);
-    //  }
-
+        return view('historial.historial_show',compact('deuda'));
+    }
 
     public function pagos(){
         

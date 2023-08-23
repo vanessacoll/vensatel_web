@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagosController;
-// use App\Http\Controllers\Admin\PagosController;
+ use App\Http\Controllers\Admin\PlansController;
 use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\Admin\ZoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+
 
 
 Route::get('enviar', [App\Http\Controllers\ContactController::class, 'Enviar']);
@@ -67,6 +70,19 @@ Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'ind
    echo Artisan::call('route:clear');
    echo Artisan::call('permission:cache-reset');
 })->name('admin.home')->middleware('isAdmin');
+
+//API
+//planes
+    Route::get('/fetch-plan', [PlansController::class, 'getPlans'])->name('plan');
+
+Route::get('/planes', [PlansController::class, 'getPlansIndex'])->name('admin.planes.plans');
+
+Route::get('/fetch-zonas', [ZoneController::class, 'getZone'])->name('zonas');
+
+
+
+
+
 
 //Solicitudes
 
@@ -133,6 +149,16 @@ Route::get('/usuariosup/{user}',[App\Http\Controllers\Auth\RegisterController::c
 
 Route::get('/message',[App\Http\Controllers\ChatController::class, 'sendMessage'])
     ->name('message');
+
+    
+// Historial de Pagos
+
+Route::get('/historial_show', [PagosController::class, 'historial'])->name('historial.historial_show');
+
+// clientes
+Route::get('/admin/clientes', [PagosController::class, 'clientes'])->name('admin.cliente.cliente');
+
+
 
 
 
