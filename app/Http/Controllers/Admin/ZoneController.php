@@ -3,23 +3,55 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\GetZone; // Cambié "getZone" a "GetZone" para seguir las convenciones de nombres
+use App\Services\GetZone;
+use App\Models\Zone;
 
 class ZoneController extends Controller
 {
     protected $getZoneService;
 
-    public function __construct(getZone $getZoneService)
+    public function __construct(getZone $getZone)
     {
-        $this->getZoneService = $getZoneService;
+        $this->getZoneService = $getZone;
     }
 
-    public function getZone() // Cambié el nombre del método para ser más descriptivo
+    public function getZone()
     {
         $zonas = $this->getZoneService->getZone();
 
-        dd($zonas);
+        //dd($zonas);
 
-        // return view('zonas.index', compact('zonas'));
+        if (isset($zonas['results']) && is_array($zonas['results'])) {
+
+            foreach ($zonas['results'] as $apiZona) {
+                Zone::updateOrCreate(
+                    ['id_zona_wisphub' => $apiZona['id']],
+                    ['nombre' => $apiZona['nombre']]
+                );
+            }
+
+            $status = 'success';
+            $content = 'Zonas Actualizadas Exitosamente';
+
+            }else{
+
+            $status = 'error';
+            $content = 'Error: '. $zonas['detail'];
+
+            }
+
+            return redirect()->route("admin.zona")->with('process_result', [
+                'status' => $status,
+                'content' => $content,
+            ]);
+
+
+    }
+
+    public function getZoneIndex()
+    {
+        $zonas = Zone::all();
+
+        return view('admin.zonas.zonas', compact('zonas'));
     }
 }
