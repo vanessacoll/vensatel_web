@@ -58,8 +58,8 @@ Route::get('solicitudes/ver/{solicitudes}',[SolicitudesController::class, 'solic
 Route::get('pagos/pago_movil/registrar',[PagosController::class, 'RegistrarPagoMovil'])->name('pago.movil.registrar');
 
 Route::post('pago/transferencias-comprobante', [App\Http\Controllers\PagosController::class, 'transferencia'])->name('pagos.transferencias-comprobante');
-Route::get('pago/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'oficina'])->name('pagos.pago_en_oficina');  
-Route::post('pago/cita/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'CitaOficina'])->name('pagos.pago_en_oficinaCita');  
+Route::get('pago/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'oficina'])->name('pagos.pago_en_oficina');
+Route::post('pago/cita/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'CitaOficina'])->name('pagos.pago_en_oficinaCita');
 Route::get('pago/transferencias', [App\Http\Controllers\PagosController::class, 'index'])->name('pagos.transferencias');
 
 
@@ -73,11 +73,13 @@ Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'ind
 
 //API
 //planes
-    Route::get('/fetch-plan', [PlansController::class, 'getPlans'])->name('plan');
+Route::get('/fetch-plan', [PlansController::class, 'getPlans'])->name('plan');
 
-Route::get('/planes', [PlansController::class, 'getPlansIndex'])->name('admin.planes.plans');
+Route::get('admin/planes', [PlansController::class, 'getPlansIndex'])->name('admin.planes.plans');
 
 Route::get('/fetch-zonas', [ZoneController::class, 'getZone'])->name('zonas');
+
+Route::get('admin/zonas', [ZoneController::class, 'getZoneIndex'])->name('admin.zona');
 
 
 
@@ -150,7 +152,7 @@ Route::get('/usuariosup/{user}',[App\Http\Controllers\Auth\RegisterController::c
 Route::get('/message',[App\Http\Controllers\ChatController::class, 'sendMessage'])
     ->name('message');
 
-    
+
 // Historial de Pagos
 
 Route::get('/historial_show', [PagosController::class, 'historial'])->name('historial.historial_show');
