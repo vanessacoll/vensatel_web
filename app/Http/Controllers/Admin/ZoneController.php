@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\GetZone; // Cambié "getZone" a "GetZone" para seguir las convenciones de nombres
+use App\Services\getZone; // Cambié "getZone" a "GetZone" para seguir las convenciones de nombres
 
 class ZoneController extends Controller
 {
@@ -17,6 +17,7 @@ class ZoneController extends Controller
     public function getZone() // Cambié el nombre del método para ser más descriptivo
     {
         $zonas = $this->getZoneService->getZone();
+
 
         dd($zonas);
 

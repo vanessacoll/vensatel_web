@@ -5,6 +5,9 @@ use App\Http\Controllers\PagosController;
  use App\Http\Controllers\Admin\PlansController;
 use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\Admin\ZoneController;
+use App\Http\Controllers\Admin\BalanceController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +82,7 @@ Route::get('/planes', [PlansController::class, 'getPlansIndex'])->name('admin.pl
 
 Route::get('/fetch-zonas', [ZoneController::class, 'getZone'])->name('zonas');
 
+Route::get('/clientes/{clienteId}/saldo', [BalanceController::class, 'getBalance']);
 
 
 
