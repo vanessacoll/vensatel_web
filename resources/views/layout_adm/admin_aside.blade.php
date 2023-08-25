@@ -67,7 +67,16 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('admin.cliente.cliente') }}"  class="nav-link {{ request()->is('*clientes*') ? 'active' : '' }}"> 
+            <a href="{{ route('admin.zona') }}" class="nav-link {{ request()->is('*zonas*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+                Zonas
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('admin.cliente.cliente') }}"  class="nav-link {{ request()->is('*clientes*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-store"></i>
               <p>
                Clientes
@@ -114,7 +123,7 @@
             </a>
           </li>
 
-          
+
 
 
 
