@@ -23,8 +23,6 @@ class Deuda extends Model
         'monto',
         'fecha',
         'id_status',
-        'id_pago',
-        'id_contact',
         'monto_extra',
         'concepto_extra',
         

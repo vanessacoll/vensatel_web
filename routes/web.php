@@ -5,9 +5,6 @@ use App\Http\Controllers\PagosController;
  use App\Http\Controllers\Admin\PlansController;
 use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\Admin\ZoneController;
-use App\Http\Controllers\Admin\BalanceController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -61,8 +58,8 @@ Route::get('solicitudes/ver/{solicitudes}',[SolicitudesController::class, 'solic
 Route::get('pagos/pago_movil/registrar',[PagosController::class, 'RegistrarPagoMovil'])->name('pago.movil.registrar');
 
 Route::post('pago/transferencias-comprobante', [App\Http\Controllers\PagosController::class, 'transferencia'])->name('pagos.transferencias-comprobante');
-Route::get('pago/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'oficina'])->name('pagos.pago_en_oficina');  
-Route::post('pago/cita/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'CitaOficina'])->name('pagos.pago_en_oficinaCita');  
+Route::get('pago/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'oficina'])->name('pagos.pago_en_oficina');
+Route::post('pago/cita/pago_en_oficina', [App\Http\Controllers\PagosController::class, 'CitaOficina'])->name('pagos.pago_en_oficinaCita');
 Route::get('pago/transferencias', [App\Http\Controllers\PagosController::class, 'index'])->name('pagos.transferencias');
 
 
@@ -76,13 +73,14 @@ Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'ind
 
 //API
 //planes
-    Route::get('/fetch-plan', [PlansController::class, 'getPlans'])->name('plan');
+Route::get('/fetch-plan', [PlansController::class, 'getPlans'])->name('plan');
 
-Route::get('/planes', [PlansController::class, 'getPlansIndex'])->name('admin.planes.plans');
+Route::get('admin/planes', [PlansController::class, 'getPlansIndex'])->name('admin.planes.plans');
 
 Route::get('/fetch-zonas', [ZoneController::class, 'getZone'])->name('zonas');
 
-Route::get('/clientes/{clienteId}/saldo', [BalanceController::class, 'getBalance']);
+Route::get('admin/zonas', [ZoneController::class, 'getZoneIndex'])->name('admin.zona');
+
 
 
 
@@ -132,6 +130,9 @@ Route::get('admin/pagos/update/{pagos}',[App\Http\Controllers\Admin\PagosControl
 Route::get('admin/pagos/ver/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'pagos_ver'])->name('pagos.ver.admin');
 
 
+Route::get('admin/deudas/rebajar/{pagos}',[App\Http\Controllers\Admin\PagosController::class, 'rebajarDeuda'])->name('rebajar.deuda.admin');
+
+
 //Usuarios
 
 
@@ -151,7 +152,7 @@ Route::get('/usuariosup/{user}',[App\Http\Controllers\Auth\RegisterController::c
 Route::get('/message',[App\Http\Controllers\ChatController::class, 'sendMessage'])
     ->name('message');
 
-    
+
 // Historial de Pagos
 
 Route::get('/historial_show', [PagosController::class, 'historial'])->name('historial.historial_show');
