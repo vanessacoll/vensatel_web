@@ -76,6 +76,15 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{ route('admin.sectoriales') }}" class="nav-link {{ request()->is('*sectoriales*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+                Sectoriales
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{ route('admin.cliente.cliente') }}"  class="nav-link {{ request()->is('*clientes*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-store"></i>
               <p>
