@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Clientes</h1>
+            <h1>Sectoriales</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin/home">Admin Dashboard</a></li>
-              <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item active">Sectoriales</li>
             </ol>
           </div>
         </div>
@@ -20,76 +20,67 @@
  @endsection
 
 @section('contenido')
- 
+
 
 
 <div class="container-fluid">
 
+    <div class="pb-3">
+    <a class="btn btn-primary float-let" href="{{ route('sectoriales') }}">Actulizar Sectorial</a>
+    </div>
     <div class="row">
            <div class="col-md-12">
              <div class="card card-primary">
                <div class="card-header">
-                 <h3 class="card-title">Clientes</h3>
+                 <h3 class="card-title">Sectoriales</h3>
                </div>
-              
+
                <!-- /.box-header -->
                <div class="card-body">
 
-                
+
 
                    <table id="example1" class="table table-bordered table-striped">
                    <thead>
                    <tr>
 
-                       <th>Mombre</th>
-                       <th>Cedula</th>
-                       <th>Email</th>
-                       <th>Telefono</th>
-                       <th>Opciones</th>
+                       <th>Identificador sectorial</th>
+                       <th>Identificador Wisphub</th>
+                       <th>Nombre</th>
                     </tr>
                    </thead>
                    <tbody>
-                    @foreach ( $clientes as $cliente )
-                        
-                       <tr>
-                        <td>
-                            {{ $cliente->name }}
-                        </td>
-                        
-                        <td>
-                            {{ $cliente->cedula }}
-                        </td>
 
-                        <td>
-                           {{ $cliente->email }}
-                        </td>
+                    @foreach ( $data as $datos )
 
-                        <td>
-                            {{ $cliente->telefono }}
-                        </td>
-                        <td>
+                    <tr>
+                     <td>
+                         {{ $datos->id_sectorial }}
+                     </td>
 
-                          <a class="btn btn-primary" href="{{ route('admin.cliente.registroWisphub') }}">
-                            <i class="fa fa-edit"></i>
-                            Registro Wisphub
-                         </a>
+                     <td>
+                         {{ $datos->id_sectorial_wisphub}}
+                     </td>
 
+                     <td>
+                         {{ $datos->nombre }}
+                     </td>
 
-                        </td>
+                    </tr>
+                 @endforeach
 
-                       </tr>
-                    @endforeach
 
                    </tbody>
                  </table>
                </div>
                <div class="card-footer">
-                
-                 
+
+
            </div>
-           
+
                <div class="card-footer">
              <a class="btn btn-default float-right" href="{{route("admin.home")}}">Cerrar</a>
+
             </div>
              </div>
              <!-- /.box -->

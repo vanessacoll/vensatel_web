@@ -5,6 +5,7 @@ use App\Http\Controllers\PagosController;
  use App\Http\Controllers\Admin\PlansController;
 use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\Admin\ZoneController;
+use App\Http\Controllers\Admin\SectorialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,6 @@ Route::get('admin/home', [App\Http\Controllers\Admin\HomeController::class, 'ind
 })->name('admin.home')->middleware('isAdmin');
 
 //API
-//planes
 Route::get('/fetch-plan', [PlansController::class, 'getPlans'])->name('plan');
 
 Route::get('admin/planes', [PlansController::class, 'getPlansIndex'])->name('admin.planes.plans');
@@ -80,6 +80,15 @@ Route::get('admin/planes', [PlansController::class, 'getPlansIndex'])->name('adm
 Route::get('/fetch-zonas', [ZoneController::class, 'getZone'])->name('zonas');
 
 Route::get('admin/zonas', [ZoneController::class, 'getZoneIndex'])->name('admin.zona');
+
+Route::get('/fetch-sectorial', [SectorialController::class, 'getSectorialData'])->name('sectoriales') ;
+
+Route::get('admin/sectoriales', [SectorialController::class, 'getSectorialIndex'])->name('admin.sectoriales');
+
+//ruta para copletar registro en Wisphub
+
+Route::get('culminar/registro',[App\Http\Controllers\Admin\PagosController::class, 'regWisphub'])->name('admin.cliente.registroWisphub');
+
 
 
 

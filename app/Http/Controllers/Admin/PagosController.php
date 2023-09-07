@@ -12,12 +12,25 @@ use App\Models\Factura;
 use App\Models\User;
 use App\Models\Status;
 use App\Models\Tasa;
+use App\Models\sectorial;
+use App\Models\Plan;
+use App\Models\Zone;
 use Carbon\Carbon;
 
 
 class PagosController extends Controller
 {
     private $disk ="comprobante";
+
+    public function regWisphub(){
+        
+        $plan = Plan::all();
+        $sectorial = sectorial::all();
+        $zone = Zone::all();
+
+        return view('admin.cliente.registroWisphub', compact('plan','sectorial','zone'));
+    }
+
 
     public function cambdolar(Request $request){
 
