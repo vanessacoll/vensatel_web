@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 
-class getBalance
+class deleteUser
 {
     protected $apiKey;
 
@@ -13,10 +13,14 @@ class getBalance
         $this->apiKey = config('wisphub.api_key');
     }
 
-    public function getBalance($id_servicio)
+    public function deleteUser($id_servicio)
     {
-        return Http::withHeaders([
+        $url = "https://api.wisphub.net/api/clientes/{$id_servicio}/perfil";
+
+        $response = Http::withHeaders([
             'Authorization' => 'Api-Key ' . $this->apiKey,
-        ])->get("https://api.wisphub.net/api/clientes/{$id_servicio}/saldo")->json();
+        ])->delete($url);
+
+        return $response->json();
     }
 }
