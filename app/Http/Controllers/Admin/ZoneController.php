@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\GetZone;
+use App\Services\getZone;
 use App\Models\Zone;
 
 class ZoneController extends Controller

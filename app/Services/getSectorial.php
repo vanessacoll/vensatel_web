@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 
-class getBalance
+class getSectorial
 {
     protected $apiKey;
 
@@ -13,10 +13,12 @@ class getBalance
         $this->apiKey = config('wisphub.api_key');
     }
 
-    public function getBalance($clienteId)
+    public function getSectorialData()
     {
-        return Http::withHeaders([
+        $response = Http::withHeaders([
             'Authorization' => 'Api-Key ' . $this->apiKey,
-        ])->get("https://api.wisphub.net/api/clientes/{$clienteId}/saldo")->json();
+        ])->get('https://api.wisphub.net/api/sectorial/');
+
+        return $response->json();
     }
 }
