@@ -25,6 +25,20 @@ class User extends Authenticatable
         'suscriptor',
         'isAdmin',
         'cedula',
+        'usuario_rb',
+        'telefono',
+        'ip_cliente',
+        'mac_cpe',
+        'id_plan',
+        'id_sectorial',
+        'direccion',
+        'localidad',
+        'ciudad',
+        'ip_router_wifi',
+        'id_servicio',
+        'id_zona',
+        'nombre_cpe',
+        'saldo',
     ];
 
     /**

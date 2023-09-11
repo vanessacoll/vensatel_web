@@ -20,7 +20,7 @@
  @endsection
 
 @section('contenido')
- 
+
 
 
 <div class="container-fluid">
@@ -31,11 +31,11 @@
                <div class="card-header">
                  <h3 class="card-title">Clientes</h3>
                </div>
-              
+
                <!-- /.box-header -->
                <div class="card-body">
 
-                
+
 
                    <table id="example1" class="table table-bordered table-striped">
                    <thead>
@@ -45,17 +45,18 @@
                        <th>Cedula</th>
                        <th>Email</th>
                        <th>Telefono</th>
+                       <th>Saldo</th>
                        <th>Opciones</th>
                     </tr>
                    </thead>
                    <tbody>
                     @foreach ( $clientes as $cliente )
-                        
+
                        <tr>
                         <td>
                             {{ $cliente->name }}
                         </td>
-                        
+
                         <td>
                             {{ $cliente->cedula }}
                         </td>
@@ -66,6 +67,9 @@
 
                         <td>
                             {{ $cliente->telefono }}
+                        </td>
+                        <td>
+                            {{ $cliente->saldo }}
                         </td>
                         <td>
 
@@ -84,10 +88,10 @@
                  </table>
                </div>
                <div class="card-footer">
-                
-                 
+
+
            </div>
-           
+
                <div class="card-footer">
              <a class="btn btn-default float-right" href="{{route("admin.home")}}">Cerrar</a>
             </div>
