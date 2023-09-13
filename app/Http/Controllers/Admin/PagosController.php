@@ -22,13 +22,32 @@ class PagosController extends Controller
 {
     private $disk ="comprobante";
 
-    public function regWisphub(){
+    public function regWisphub(User $cliente){
         
         $plan = Plan::all();
         $sectorial = sectorial::all();
         $zone = Zone::all();
 
-        return view('admin.cliente.registroWisphub', compact('plan','sectorial','zone'));
+        return view('admin.cliente.registroWisphub', compact('plan','sectorial','zone','cliente'));
+    }
+
+
+    public function GuaRegWisphub (Request $request, User $cliente)
+    {   
+       $cliente->usuario_rb = $request->usuario_rb; 
+       $cliente->ip_cliente = $request->ip_cliente;
+       $cliente->mac_cpe = $request->mac_cpe;
+       $cliente->direccion = $request->direccion;
+       $cliente->localidad = $request->localidad;
+       $cliente->ciudad = $request->ciudad;
+       $cliente->ip_router_wifi = $request->ip_router_wifi;
+       $cliente->nombre_cpe = $request->nombre_cpe;
+       $cliente->id_plan = $request->id_plan;
+       $cliente->id_sectorial = $request->id_sectorial;
+       $cliente->id_zona = $request->id_zona;
+       $cliente->saveOrFail();
+        
+        return redirect()->route('admin.cliente.cliente');
     }
 
 
