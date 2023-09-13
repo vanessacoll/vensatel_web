@@ -69,7 +69,8 @@
                         </td>
                         <td>
 
-                          <a class="btn btn-primary" href="{{ route('admin.cliente.registroWisphub') }}">
+                          {{-- <a class="btn btn-primary" href="{{ route('admin.cliente.registroWisphub', $dato) }}"> --}}
+                            <a class="btn btn-primary" href="{{ route('admin.cliente.registroWisphub', $cliente) }}">
                             <i class="fa fa-edit"></i>
                             Registro Wisphub
                          </a>
