@@ -87,7 +87,9 @@ Route::get('admin/sectoriales', [SectorialController::class, 'getSectorialIndex'
 
 //ruta para copletar registro en Wisphub
 
-Route::get('culminar/registro',[App\Http\Controllers\Admin\PagosController::class, 'regWisphub'])->name('admin.cliente.registroWisphub');
+Route::get('culminar/registro{cliente}',[App\Http\Controllers\Admin\PagosController::class, 'regWisphub'])->name('admin.cliente.registroWisphub');
+
+Route::post('culminar/registro/guardar{cliente}',[App\Http\Controllers\Admin\PagosController::class, 'GuaRegWisphub'])->name('UdatregistroWisphub');
 
 
 
