@@ -91,9 +91,9 @@ Route::get('admin/sectoriales', [SectorialController::class, 'getSectorialIndex'
 Route::get('/fetch-clients', [ClientController::class, 'getUsers'])->name('getUsers') ;
 Route::get('/fetch-balance', [ClientController::class, 'getBalance'])->name('getBalance') ;
 
-Route::get('culminar/registro{cliente}',[App\Http\Controllers\Admin\PagosController::class, 'regWisphub'])->name('admin.cliente.registroWisphub');
+Route::get('culminar/registro/{cliente}',[App\Http\Controllers\Admin\PagosController::class, 'regWisphub'])->name('admin.cliente.registroWisphub');
 
-Route::post('culminar/registro/guardar{cliente}',[App\Http\Controllers\Admin\PagosController::class, 'GuaRegWisphub'])->name('UdatregistroWisphub');
+Route::post('culminar/registro/guardar/{cliente}',[App\Http\Controllers\Admin\PagosController::class, 'GuaRegWisphub'])->name('UdatregistroWisphub');
 
 
 
