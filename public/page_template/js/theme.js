@@ -3599,7 +3599,7 @@ var lottieInit = function lottieInit() {
 /*                             Navbar Combo Layout                            */
 
 /* -------------------------------------------------------------------------- */
-
+/*
 
 var navbarComboInit = function navbarComboInit() {
   var Selector = {
@@ -3653,14 +3653,14 @@ var navbarComboInit = function navbarComboInit() {
   utils.resize(function () {
     return moveNavContent(window.innerWidth);
   });
-};
+};*/
 /* -------------------------------------------------------------------------- */
 
 /*                         Navbar Darken on scroll                        */
 
 /* -------------------------------------------------------------------------- */
 
-
+/*
 var navbarDarkenOnScroll = function navbarDarkenOnScroll() {
   var Selector = {
     NAVBAR: '[data-navbar-darken-on-scroll]',
@@ -3779,14 +3779,14 @@ var navbarDarkenOnScroll = function navbarDarkenOnScroll() {
       navbar.style.transition = 'none';
     });
   }
-};
+};*/
 /* -------------------------------------------------------------------------- */
 
 /*                                 Navbar Top                                 */
 
 /* -------------------------------------------------------------------------- */
 
-
+/*
 var navbarTopDropShadow = function navbarTopDropShadow() {
   var Selector = {
     NAVBAR: '.navbar:not(.navbar-vertical)',
@@ -3852,14 +3852,14 @@ var navbarTopDropShadow = function navbarTopDropShadow() {
       setDropShadow(html);
     });
   }
-};
+};*/
 /* -------------------------------------------------------------------------- */
 
 /*                               Navbar Vertical                              */
 
 /* -------------------------------------------------------------------------- */
 
-
+/*
 var handleNavbarVerticalCollapsed = function handleNavbarVerticalCollapsed() {
   var Selector = {
     HTML: 'html',
@@ -3905,7 +3905,7 @@ var handleNavbarVerticalCollapsed = function handleNavbarVerticalCollapsed() {
       }
     });
   }
-};
+};*/
 /*-----------------------------------------------
 |   Inline Player [plyr]
 -----------------------------------------------*/
