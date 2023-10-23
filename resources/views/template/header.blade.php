@@ -19,9 +19,9 @@
 
         <ul class="navbar-nav ms-auto mt-2">
 <!-- settings-->
-          <li class="nav-item d-flex align-items-center me-2">
+        <!--  <li class="nav-item d-flex align-items-center me-2">
             <div class="nav-link theme-switch-toggle fa-icon-wait p-0"><input class="form-check-input ms-0 theme-switch-toggle-input" id="themeControlToggle" type="checkbox" data-theme-control="theme" value="dark"><label class="mb-0 theme-switch-toggle-label theme-switch-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch to light theme"><span class="fas fa-sun"></span></label><label class="mb-0 py-2 theme-switch-toggle-light d-lg-none" for="themeControlToggle"><span>Switch to light theme</span></label><label class="mb-0 theme-switch-toggle-label theme-switch-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch to dark theme"><span class="fas fa-moon"></span></label><label class="mb-0 py-2 theme-switch-toggle-dark d-lg-none" for="themeControlToggle"><span>Switch to dark theme</span></label></div>
-          </li>
+          </li> -->
 
 
           <!--login-->
