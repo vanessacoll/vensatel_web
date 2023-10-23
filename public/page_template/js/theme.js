@@ -3600,7 +3600,6 @@ var lottieInit = function lottieInit() {
 
 /* -------------------------------------------------------------------------- */
 
-
 var navbarComboInit = function navbarComboInit() {
   var Selector = {
     NAVBAR_VERTICAL: '.navbar-vertical',
@@ -3681,12 +3680,12 @@ var navbarDarkenOnScroll = function navbarDarkenOnScroll() {
   };
   var navbar = document.querySelector(Selector.NAVBAR);
 
-  function removeNavbarBgClass() {
+  /*function removeNavbarBgClass() {
     navbar.classList.remove('bg-dark');
     navbar.classList.remove('bg-100');
-  }
+  }*/
 
-  var toggleThemeClass = function toggleThemeClass(theme) {
+  /*var toggleThemeClass = function toggleThemeClass(theme) {
     if (theme === 'dark') {
       navbar.classList.remove('navbar-dark');
       navbar.classList.add('navbar-light');
@@ -3694,7 +3693,7 @@ var navbarDarkenOnScroll = function navbarDarkenOnScroll() {
       navbar.classList.remove('navbar-light');
       navbar.classList.add('navbar-dark');
     }
-  };
+  };*/
 
   function getBgClassName(name, defaultColorName) {
     var parent = document.documentElement;
@@ -3786,7 +3785,6 @@ var navbarDarkenOnScroll = function navbarDarkenOnScroll() {
 
 /* -------------------------------------------------------------------------- */
 
-
 var navbarTopDropShadow = function navbarTopDropShadow() {
   var Selector = {
     NAVBAR: '.navbar:not(.navbar-vertical)',
@@ -3858,7 +3856,6 @@ var navbarTopDropShadow = function navbarTopDropShadow() {
 /*                               Navbar Vertical                              */
 
 /* -------------------------------------------------------------------------- */
-
 
 var handleNavbarVerticalCollapsed = function handleNavbarVerticalCollapsed() {
   var Selector = {
