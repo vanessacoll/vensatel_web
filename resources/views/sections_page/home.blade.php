@@ -1,6 +1,6 @@
 <section id="home_page" class="py-0 overflow-hidden light" id="banner">
-    <div class="bg-holder overlay"
-        style="background-image:url(../assets/img/generic/bg-1.jpg);background-position: center bottom;"></div>
+
+    <div class="bg-holder overlay" style="background-image:url(page_template/img/selfie2.png);background-position: center bottom;"></div>
     <!--/.bg-holder-->
     <div class="container">
         <div class="row pt-8 pt-lg-10 pb-lg-9 pb-xl-0">
@@ -11,8 +11,7 @@
                     <br />al alcance de tus manos.
                 </h1>
 
-                <p class="lead text-white opacity-75">Conéctate al mejor internet de Venezuela y goza de la mejor
-                    estabilidad, rapidez y economía que solo Vensatel puede darte.</p>
+          <p class="lead text-white opacity-75">Conéctate al servicio de internet con mayor estabilidad y disponibilidad del mercado.</p>
 
                 <a class="btn btn-outline-light border-2 rounded-pill btn-lg mt-4 fs-0 py-2"
                     href="{{ route('index') }}">Solicitar Servicio
