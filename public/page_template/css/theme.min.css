@@ -2,7 +2,7 @@
 .map-container img {
 	max-width: 100%;
 	/* Esto hace que la imagen se ajuste al ancho del contenedor */
-	height: auto;
+	height: 100%;
 	/* Esto mantiene la relación de aspecto original de la imagen */
 }
 
