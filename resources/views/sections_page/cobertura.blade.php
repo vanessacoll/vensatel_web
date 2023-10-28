@@ -1,4 +1,4 @@
-<section id="coberture_page" class="bg-200 text-center">
+<section id="coberture_page" class="bg-light text-center">
     <div class="container">
         <div class="row justify-content-center">
 
@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="map-container">
-                        <img src="page_template/img/mapa vector png pagina.png" alt="Venezuela" id="map-image">
+                        <img src="page_template/img/mapa vector png pagina.png" alt="Venezuela" id="map-image" class="img-fluid d-block">
                     </div>
                 </div>
                 <div class="col-lg-6">
