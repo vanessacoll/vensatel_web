@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="row flex-center mt-1">
-        <div class="col-md col-lg-5 col-xl-4 pe-lg-6 order-md-2"><img class="img-fluid px-6 px-md-0" src="page_template/img/49.png" alt="" /></div>
+        <div class="col-md col-lg-5 col-xl-4 pe-lg-6 order-md-2"><img class="img-fluid px-6 px-md-0" src="page_template/img/491.png" alt="" /></div>
         <div class="col-md col-lg-5 col-xl-4 mt-4 mt-md-0">
           <h3>Más de 500 clientes satisfechos en todo el territorio nacional</h3>
         </div>

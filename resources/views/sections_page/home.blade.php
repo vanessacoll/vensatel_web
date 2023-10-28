@@ -1,6 +1,6 @@
 <section id="home_page" class="py-0 overflow-hidden light" id="banner">
 
-    <div class="bg-holder overlay" style="background-image:url(page_template/img/selfie2.png);background-position: center bottom;"></div>
+    <div class="bg-holder overlay img-fluid d-block" style="background-image:url(page_template/img/selfie2.png);background-position: center bottom;"></div>
     <!--/.bg-holder-->
     <div class="container">
         <div class="row pt-8 pt-lg-10 pb-lg-9 pb-xl-0">
