@@ -1,4 +1,4 @@
-<section class="bg-200">
+<section class="bg-200" id="solicitud-servicio">
     <div class="container">
       <div class="row justify-content-center text-center">
         <div class="col-lg-8 col-xl-7 col-xxl-6">
