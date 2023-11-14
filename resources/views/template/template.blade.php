@@ -97,6 +97,9 @@
 
     @include('template.jquery')
 
+    <a href="{{ route('index') }}" class="btn btn-warning rounded-capsule mr-1 mb-1 floating-button">
+     <span class="fas fa-arrow-right mr-1" data-fa-transform="shrink-3"></span> Solicitar Servicio</a>
+
   </body>
 
 </html>

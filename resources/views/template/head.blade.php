@@ -75,4 +75,14 @@
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+<style>
+    .floating-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 50px;
+    color: #001f3f; 
+}
+</style>
+
   </head>

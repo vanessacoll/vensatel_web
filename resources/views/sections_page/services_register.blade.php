@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr">
+<html lang="en-US" dir="ltr" class="dark">
 
     @include('template.head')
 
@@ -69,6 +69,22 @@
     <!-- ===============================================-->
 
     @include('template.jquery')
+
+<script>
+    // Espera a que el documento esté completamente cargado
+    $(document).ready(function () {
+        // Obtén la posición de la sección de solicitud de servicio
+        var solicitudServicioSection = $('#solicitud-servicio');
+
+        // Comprueba si la sección de solicitud de servicio existe
+        if (solicitudServicioSection.length > 0) {
+            // Desplázate suavemente a la sección de solicitud de servicio al cargar la página
+            $('html, body').animate({
+                scrollTop: solicitudServicioSection.offset().top
+            }, 1000); // Puedes ajustar la duración del desplazamiento según tus preferencias
+        }
+    });
+</script>
 
   </body>
 
