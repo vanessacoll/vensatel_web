@@ -13,21 +13,20 @@
                     <div class="">
 
 
-                        <div class="card text-center p ">
+                        <div class="card text-center p mt-3">
                             <div class="card-body">
-                                <h5 class="card-title">Velocidad de descarga</h5>
-                                <p class="card-text">Gracias a nuestra tecnología inhalambrica se garantiza la velocidad
-                                    de conexión a internet mas serca de ti.
-                                </p>
-
+                                <h5 class="card-title">CONECTANDO A MÁS CIUDADES</h5>
                             </div>
                         </div>
                         <br>
                         <div class="card text-center" id="bolivar-button">
                             <div class="card-body">
                                 <h5 class="card-title">Bolívar</h5>
-                                <p class="card-text">Gracias a nuestra tecnología inhalambrica se garantiza la velocidad
-                                    de conexión a internet mas serca de ti.
+                                <p class="card-text">Tumeremo.
+                                </p>
+                                <p class="card-text">Puerto Ordaz.
+                                </p>
+                                <p class="card-text">San Felix.
                                 </p>
 
                             </div>
@@ -36,8 +35,7 @@
                         <div class="card text-center" id="anzoategui-button">
                             <div class="card-body">
                                 <h5 class="card-title">Anzoátegui</h5>
-                                <p class="card-text">Gracias a nuestra tecnología inhalambrica se garantiza la velocidad
-                                    de conexión a internet mas serca de ti.
+                                <p class="card-text">Barquisimeto.
                                 </p>
 
                             </div>
